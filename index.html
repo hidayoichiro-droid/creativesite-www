@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CREATIVESITE（クリエイティブサイト）｜IT相談・業務自動化・AI活用</title>
+<meta name="description" content="ITで、人の「困った」の助けになりたい。IT何でも相談、業務自動化・システム開発（Power Automate・Power Apps・Chrome拡張）、AI活用コンサルティング。">
+<meta name="theme-color" content="#fdfdfd">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="CREATIVESITE">
+<meta property="og:title" content="CREATIVESITE（クリエイティブサイト）">
+<meta property="og:description" content="ITで、人の「困った」の助けになりたい。">
+<meta property="og:url" content="https://www.creativesite.jp/">
+<link rel="canonical" href="https://www.creativesite.jp/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fdfdfd'/%3E%3Crect y='20' width='32' height='12' fill='%23c4c5c5'/%3E%3Ctext x='16' y='19' font-family='Arial' font-size='17' font-weight='300' text-anchor='middle' fill='%23111'%3EC%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --paper: #fdfdfd;
+    --ink: #111;
+    --sub: #555;
+    --rule: #dcdddd;
+    --floor-top: #bfc0c0;
+    --floor-bottom: #f1f1f1;
+    --link: #1c3fd0;
+    --gutter: clamp(1.25rem, 4.8vw, 6rem);
+    --horizon: 25%;
+
+    --thin: "Helvetica Neue", "Segoe UI", "Avenir Next", Helvetica, Arial, "Hiragino Sans", "Yu Gothic", sans-serif;
+    --jp: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", "Noto Sans JP", Meiryo, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--jp); line-height: 1.9; }
+  a { color: var(--link); }
+  :focus-visible { outline: 3px solid #e0a800; outline-offset: 3px; }
+
+  /* ---------- 1画面目: 白い空と、灰色の床に映る文字 ---------- */
+  .stage {
+    position: relative;
+    height: 100vh;
+    height: 100svh;
+    min-height: 600px;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  .floor {
+    position: absolute; inset: auto 0 0 0; height: var(--horizon);
+    background: linear-gradient(180deg, var(--floor-top) 0%, #d8d9d9 55%, var(--floor-bottom) 100%);
+    box-shadow: inset 0 -10px 14px -10px rgba(0, 0, 0, .18);
+  }
+
+  .tagline {
+    position: absolute; left: var(--gutter); top: clamp(3rem, 16vh, 8rem); margin: 0;
+    font-family: var(--jp); font-weight: 300;
+    font-size: clamp(1.02rem, 2.6vw, 2rem); line-height: 1.7; letter-spacing: .06em;
+  }
+  .tagline span { display: inline-block; }
+  .tagline small { display: block; margin-top: .9rem; font-size: .5em; letter-spacing: .12em; color: var(--sub); }
+
+  .thin {
+    font-family: var(--thin); font-weight: 300; text-transform: uppercase;
+    font-size: clamp(.95rem, 2.05vw, 1.9rem); letter-spacing: .1em; line-height: 1.02;
+  }
+  .mark { position: absolute; bottom: var(--horizon); margin: 0; }
+  .mark.left  { left: var(--gutter); }
+  .mark.right { right: 0; text-align: right; padding-right: max(.5rem, calc(var(--gutter) * .1)); }
+  .mark ul { margin: 0; padding: 0; list-style: none; }
+
+  /* 床に映った文字(上下を反転して、下へ向けて消える) */
+  .mark .refl {
+    position: absolute; left: 0; right: 0; top: 100%;
+    transform: scaleY(-1);
+    color: #fff;
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,.7), transparent 92%);
+            mask-image: linear-gradient(to top, rgba(0,0,0,.7), transparent 92%);
+    pointer-events: none; user-select: none;
+    animation: appear 1.4s ease-out .3s both;
+  }
+  @keyframes appear { from { opacity: 0; } to { opacity: 1; } }
+
+  .mail {
+    position: absolute; left: var(--gutter); bottom: clamp(.9rem, 3vh, 1.6rem); margin: 0;
+    font-family: var(--thin); font-size: .82rem; line-height: 1.4;
+  }
+
+  /* ---------- 2画面目以降: 内容 ---------- */
+  .info { width: min(980px, 100% - 2.5rem); margin: 0 auto; padding: clamp(3rem, 9vw, 6rem) 0 clamp(3rem, 8vw, 5rem); }
+  .sec { display: grid; grid-template-columns: minmax(9rem, 13rem) 1fr; column-gap: 2rem; padding: 2rem 0; border-top: 1px solid var(--rule); }
+  .sec:last-child { border-bottom: 1px solid var(--rule); }
+  .sec h2 {
+    margin: 0; font-family: var(--thin); font-weight: 300; text-transform: uppercase;
+    font-size: 1.25rem; letter-spacing: .12em; line-height: 1.6;
+  }
+  .sec h2 small { display: block; font-family: var(--jp); font-size: .72rem; letter-spacing: .08em; color: var(--sub); text-transform: none; }
+  dl { margin: 0; }
+  dl > div + div { margin-top: 1.5rem; }
+  dt { font-weight: 600; }
+  dt small { font-weight: 400; color: var(--sub); }
+  dd { margin: .15rem 0 0; max-width: 36em; color: #222; }
+  dd p { margin: 0; }
+  dd p + p { margin-top: .5rem; }
+  p, dd { line-break: strict; text-wrap: pretty; }
+
+  .links { display: flex; flex-wrap: wrap; gap: .7rem; margin: 0; padding: 0; list-style: none; }
+  .links a {
+    display: inline-block; padding: .65rem 1.4rem; min-width: 8.5rem; text-align: center;
+    color: var(--ink); text-decoration: none; border: 1px solid var(--ink);
+    font-size: .95rem; letter-spacing: .04em;
+    transition: background-color .15s, color .15s;
+  }
+  .links a:hover { background: var(--ink); color: #fff; }
+  .contact-note { margin: 0 0 1.2rem; max-width: 34em; }
+
+  footer { border-top: 1px solid var(--rule); padding: 1.3rem var(--gutter); font-family: var(--thin); font-weight: 300; font-size: .8rem; letter-spacing: .08em; color: var(--sub); }
+  footer p { margin: 0; }
+
+  @media (max-width: 720px) {
+    .sec { grid-template-columns: 1fr; row-gap: 1rem; }
+    .thin { letter-spacing: .05em; font-size: clamp(.8rem, 3.6vw, 1rem); }
+    :root { --horizon: 27%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mark .refl { animation: none; }
+    .links a { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="stage">
+  <p class="tagline"><span>ITで、人の「困った」の</span> <span>助けになりたい</span><small>CREATIVESITE（クリエイティブサイト）</small></p>
+
+  <div class="floor" aria-hidden="true"></div>
+
+  <h1 class="mark left thin" aria-label="CREATIVESITE（クリエイティブサイト）">
+    <span>CREATIVESITE</span>
+    <span class="refl" aria-hidden="true">CREATIVESITE</span>
+  </h1>
+
+  <div class="mark right thin">
+    <ul>
+      <li>IT Consulting</li>
+      <li>Automation</li>
+      <li>Power Automate</li>
+      <li>Power Apps</li>
+      <li>Chrome Extension</li>
+      <li>AI Consulting</li>
+    </ul>
+    <ul class="refl" aria-hidden="true">
+      <li>IT Consulting</li>
+      <li>Automation</li>
+      <li>Power Automate</li>
+      <li>Power Apps</li>
+      <li>Chrome Extension</li>
+      <li>AI Consulting</li>
+    </ul>
+  </div>
+
+  <p class="mail"><a href="mailto:hida.yoichiro@gmail.com">hida.yoichiro@gmail.com</a></p>
+</header>
+
+<main class="info">
+
+  <section class="sec" aria-labelledby="service">
+    <h2 id="service">Service<small>できること</small></h2>
+    <dl>
+      <div>
+        <dt>IT何でも相談</dt>
+        <dd><p>ITのことで困っていることを、まずお聞かせください。何から手をつければよいか分からない段階でも、一緒に整理します。</p></dd>
+      </div>
+      <div>
+        <dt>業務自動化・システム開発</dt>
+        <dd><p>Power Automate、Power Apps、Chrome拡張などを使って、毎日の手作業や業務の流れを、自動化・システム化します。</p></dd>
+      </div>
+      <div>
+        <dt>AI活用コンサルティング</dt>
+        <dd><p>AIを仕事にどう取り入れるか、活用の進め方を一緒に考えます。</p></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="sec" aria-labelledby="products">
+    <h2 id="products">Products<small>つくっているもの</small></h2>
+    <dl>
+      <div>
+        <dt>ARise</dt>
+        <dd>
+          <p>印刷した写真がARで動く。アプリ不要、スマホをかざすだけ。</p>
+          <p>この名刺の表面でも、ARiseが動きます。表面のQRコードをスマホのカメラで読み取り、開いたページで名刺を映してみてください。</p>
+          <p><a href="https://ar.creativesite.jp/">名刺のARを開く（スマホ用）</a></p>
+        </dd>
+      </div>
+      <div>
+        <dt>Crealize <small>（クリアライズ）</small></dt>
+        <dd>
+          <p>写真1枚から、ECサイトの販売用動画が作れる。</p>
+          <p>くわしくは、下のメールかLINEでお問い合わせください。</p>
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="sec" aria-labelledby="contact">
+    <h2 id="contact">Contact<small>ご相談</small></h2>
+    <div>
+      <p class="contact-note">まずは、状況をお聞かせください。内容がまとまっていなくても大丈夫です。</p>
+      <ul class="links">
+        <li><a href="mailto:hida.yoichiro@gmail.com">メール</a></li>
+        <li><a href="https://line.me/ti/p/GgQN7ncyRf">LINE</a></li>
+        <li><a href="https://sasaeai.link-platform.jp/mypage/profile/member?profile_id=29231">SASAEAI</a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; CREATIVESITE</p>
+</footer>
+
+</body>
+</html>
