@@ -119,6 +119,9 @@
     transition: background-color .15s, color .15s;
   }
   .links a:hover { background: var(--ink); color: #fff; }
+  .soon { display: inline-block; padding: .65rem 1.4rem; min-width: 8.5rem; text-align: center; border: 1px dashed #aaa; color: #777; font-size: .95rem; cursor: not-allowed; }
+  .soon small { display: block; font-size: .72rem; letter-spacing: .08em; }
+  dd .links { margin-top: .8rem; }
   .contact-note { margin: 0 0 1.2rem; max-width: 34em; }
 
   footer { border-top: 1px solid var(--rule); padding: 1.3rem var(--gutter); font-family: var(--thin); font-weight: 300; font-size: .8rem; letter-spacing: .08em; color: var(--sub); }
@@ -185,6 +188,23 @@
       <div>
         <dt>AI活用コンサルティング</dt>
         <dd><p>AIを仕事にどう取り入れるか、活用の進め方を一緒に考えます。</p></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="sec" aria-labelledby="application">
+    <h2 id="application">Application<small>アプリケーション</small></h2>
+    <dl>
+      <div>
+        <dt>AutoClicker</dt>
+        <dd>
+          <p>画面を見張って、見つけたら押す。Mac用の画像認識オートクリッカー。</p>
+          <p>無料版あり / Pro ¥4,980（買い切り）・¥980/月</p>
+          <p><a href="/autoclicker/">詳しく見る →</a></p>
+          <ul class="links">
+            <li><span class="soon" aria-disabled="true">ライセンスを購入<small>近日公開</small></span></li>
+          </ul>
+        </dd>
       </div>
     </dl>
   </section>

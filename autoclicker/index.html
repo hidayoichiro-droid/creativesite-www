@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5VR844BE9Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5VR844BE9Q');
+</script>
+<title>AutoClicker｜画像認識オートクリッカー（Mac）｜CREATIVESITE</title>
+<meta name="description" content="画面を見張って、見つけたら押す。Mac用の画像認識オートクリッカー AutoClicker。無料版あり、Pro版は買い切り¥4,980／月額¥980。">
+<meta name="theme-color" content="#fdfdfd">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="CREATIVESITE">
+<meta property="og:title" content="AutoClicker｜CREATIVESITE">
+<meta property="og:description" content="画面を見張って、見つけたら押す。Mac用の画像認識オートクリッカー。">
+<meta property="og:url" content="https://www.creativesite.jp/autoclicker/">
+<link rel="canonical" href="https://www.creativesite.jp/autoclicker/">
+<style>
+  :root {
+    --paper: #fdfdfd;
+    --ink: #111;
+    --sub: #555;
+    --rule: #dcdddd;
+    --floor-top: #bfc0c0;
+    --floor-bottom: #f1f1f1;
+    --link: #1c3fd0;
+    --gutter: clamp(1.25rem, 4.8vw, 6rem);
+    --horizon: 25%;
+
+    --thin: "Helvetica Neue", "Segoe UI", "Avenir Next", Helvetica, Arial, "Hiragino Sans", "Yu Gothic", sans-serif;
+    --jp: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", "Noto Sans JP", Meiryo, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--jp); line-height: 1.9; }
+  a { color: var(--link); }
+  :focus-visible { outline: 3px solid #e0a800; outline-offset: 3px; }
+
+  /* ---------- 2画面目以降: 内容 ---------- */
+  .info { width: min(980px, 100% - 2.5rem); margin: 0 auto; padding: clamp(3rem, 9vw, 6rem) 0 clamp(3rem, 8vw, 5rem); }
+  .sec { display: grid; grid-template-columns: minmax(9rem, 13rem) 1fr; column-gap: 2rem; padding: 2rem 0; border-top: 1px solid var(--rule); }
+  .sec:last-child { border-bottom: 1px solid var(--rule); }
+  .sec h2 {
+    margin: 0; font-family: var(--thin); font-weight: 300; text-transform: uppercase;
+    font-size: 1.25rem; letter-spacing: .12em; line-height: 1.6;
+  }
+  .sec h2 small { display: block; font-family: var(--jp); font-size: .72rem; letter-spacing: .08em; color: var(--sub); text-transform: none; }
+  dl { margin: 0; }
+  dl > div + div { margin-top: 1.5rem; }
+  dt { font-weight: 600; }
+  dt small { font-weight: 400; color: var(--sub); }
+  dd { margin: .15rem 0 0; max-width: 36em; color: #222; }
+  dd p { margin: 0; }
+  dd p + p { margin-top: .5rem; }
+  p, dd { line-break: strict; text-wrap: pretty; }
+
+  .links { display: flex; flex-wrap: wrap; gap: .7rem; margin: 0; padding: 0; list-style: none; }
+  .links a {
+    display: inline-block; padding: .65rem 1.4rem; min-width: 8.5rem; text-align: center;
+    color: var(--ink); text-decoration: none; border: 1px solid var(--ink);
+    font-size: .95rem; letter-spacing: .04em;
+    transition: background-color .15s, color .15s;
+  }
+  .links a:hover { background: var(--ink); color: #fff; }
+  .contact-note { margin: 0 0 1.2rem; max-width: 34em; }
+
+  footer { border-top: 1px solid var(--rule); padding: 1.3rem var(--gutter); font-family: var(--thin); font-weight: 300; font-size: .8rem; letter-spacing: .08em; color: var(--sub); }
+  footer p { margin: 0; }
+
+  @media (max-width: 720px) {
+    .sec { grid-template-columns: 1fr; row-gap: 1rem; }
+    
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .links a { transition: none; }
+  }
+
+  .top { padding: 1.2rem var(--gutter); font-family: var(--thin); font-weight: 300; letter-spacing: .12em; text-transform: uppercase; font-size: .95rem; }
+  .top a { color: var(--ink); text-decoration: none; }
+  .hero { width: min(980px, 100% - 2.5rem); margin: 0 auto; padding: clamp(2rem, 7vw, 4.5rem) 0 1.5rem; }
+  .hero h1 { margin: 0; font-family: var(--thin); font-weight: 300; font-size: clamp(2rem, 6vw, 3.6rem); letter-spacing: .06em; line-height: 1.2; }
+  .hero p { margin: 1rem 0 0; font-size: clamp(1rem, 2.2vw, 1.25rem); font-weight: 300; }
+  .lead { max-width: 40em; margin: 0 0 1.5rem; }
+  ul.plain { margin: 0; padding-left: 1.2em; max-width: 40em; }
+  ul.plain li + li { margin-top: .5rem; }
+  .tbl { overflow-x: auto; margin: 0 0 1.2rem; }
+  table { border-collapse: collapse; width: 100%; min-width: 24rem; font-size: .95rem; }
+  th, td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--rule); vertical-align: top; line-height: 1.6; }
+  th { font-weight: 600; background: #f4f4f4; }
+  .soon { display: inline-block; padding: .65rem 1.4rem; min-width: 8.5rem; text-align: center; border: 1px dashed #aaa; color: #777; font-size: .95rem; cursor: not-allowed; }
+  .soon small { display: block; font-size: .72rem; letter-spacing: .08em; }
+  .sec > * { min-width: 0; }
+  .note { font-size: .88rem; color: var(--sub); max-width: 40em; }
+</style>
+</head>
+<body>
+
+<p class="top"><a href="/">&larr; CREATIVESITE</a></p>
+
+<header class="hero">
+  <h1>AutoClicker</h1>
+  <p>画面を見張って、見つけたら押す。Mac用の画像認識オートクリッカー。</p>
+</header>
+
+<main class="info">
+
+  <section class="sec" aria-labelledby="about">
+    <h2 id="about">About<small>概要</small></h2>
+    <div>
+      <p class="lead">「この画面が出たら、このボタンを押す」。AutoClickerは、それだけを自動でやってくれるMacアプリです。座標を指定するだけのオートクリッカーと違い、画面に出た画像を見て動くので、ボタンの出るタイミングがバラバラな作業にも使えます。iPhoneミラーリングの画面も対象にできます。</p>
+      <ul class="links"><li><span class="soon" aria-disabled="true">無料版をダウンロード<small>近日公開</small></span></li><li><span class="soon" aria-disabled="true">買い切り ¥4,980 を購入<small>近日公開</small></span></li><li><span class="soon" aria-disabled="true">月額 ¥980 を購入<small>近日公開</small></span></li></ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="uses">
+    <h2 id="uses">Use Cases<small>こんな作業に</small></h2>
+    <ul class="plain">
+      <li><strong>iPhoneアプリの動作確認</strong>：同じ操作を何十回も繰り返す、不具合の再現テスト</li>
+      <li><strong>定型作業の待ち受け</strong>：長い処理の途中で出る決まった確認ダイアログを、自動で進める</li>
+      <li><strong>画面操作のデモ・収録</strong>：毎回同じ操作を、同じ流れで再生する</li>
+      <li><strong>繰り返しのタップ操作</strong>：手でやると面倒な、決まった画面の繰り返し</li>
+    </ul>
+  </section>
+
+  <section class="sec" aria-labelledby="features">
+    <h2 id="features">Features<small>特長</small></h2>
+    <ul class="plain">
+      <li><strong>画像認識で動く</strong>：押したいボタンの画像を登録すると、画面上で見つけてクリックします</li>
+      <li><strong>複数の動きを順番に登録できる</strong>：「Aを押す→Bが出るまで待つ→Cを押す」のような流れを組めます</li>
+      <li><strong>iPhoneミラーリングに対応</strong>：Macに映したiPhone画面も操作対象にできます</li>
+      <li><strong>ウィンドウに追従</strong>：対象アプリのウィンドウが動いても、範囲がついていきます</li>
+      <li><strong>キーボードショートカット</strong>：主な操作をキーボードで呼び出せます</li>
+    </ul>
+  </section>
+
+  <section class="sec" aria-labelledby="plans">
+    <h2 id="plans">Plans<small>料金プラン</small></h2>
+    <div>
+      <div class="tbl"><table>
+        <thead><tr><th>プラン</th><th>料金</th><th>内容</th></tr></thead>
+        <tbody>
+          <tr><td>無料版</td><td>無料</td><td>基本機能をお試しいただけます（下表の制限あり）</td></tr>
+          <tr><td>Pro版（買い切り）</td><td>¥4,980</td><td>制限なし。アップデート込み</td></tr>
+          <tr><td>Pro版（月額）</td><td>¥980/月</td><td>制限なし</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">無料版でお試しのうえ、必要な場合のみPro版をご購入ください。ライセンスは1つにつき1台のMacで使えます。</p>
+      <div class="tbl"><table>
+        <thead><tr><th>項目</th><th>無料版</th><th>Pro版</th></tr></thead>
+        <tbody>
+          <tr><td>プロジェクト数</td><td>1つ</td><td>無制限</td></tr>
+          <tr><td>1プロジェクトあたりの動き数</td><td>3つまで</td><td>無制限</td></tr>
+          <tr><td>動きのパターン</td><td>単一のみ</td><td>単一 / 複数</td></tr>
+          <tr><td>実行順序</td><td>OR判定のみ</td><td>OR判定 / 上から順に</td></tr>
+          <tr><td>タイマー（動きが無いときの自動動作）</td><td>なし</td><td>あり</td></tr>
+          <tr><td>クリックの揺らぎ（遅延・位置ずらし）</td><td>なし</td><td>あり</td></tr>
+          <tr><td>設定のエクスポート/インポート</td><td>なし</td><td>あり</td></tr>
+        </tbody>
+      </table></div>
+      <ul class="links"><li><span class="soon" aria-disabled="true">無料版をダウンロード<small>近日公開</small></span></li><li><span class="soon" aria-disabled="true">買い切り ¥4,980 を購入<small>近日公開</small></span></li><li><span class="soon" aria-disabled="true">月額 ¥980 を購入<small>近日公開</small></span></li></ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="req">
+    <h2 id="req">Requirements<small>動作環境</small></h2>
+    <ul class="plain">
+      <li>Mac：macOS 15 Sequoia以降（Apple silicon推奨）</li>
+      <li>iPhone（ミラーリング使用時）：iOS 18以降</li>
+      <li>必要な設定：画面収録とアクセシビリティの許可</li>
+      <li>ネット接続：ライセンス認証時に必要</li>
+    </ul>
+  </section>
+
+  <section class="sec" aria-labelledby="notice">
+    <h2 id="notice">Notice<small>ご利用前にご確認ください</small></h2>
+    <ul class="plain">
+      <li>EU圏では使えません。iPhoneミラーリングがEU圏で提供されていないためです。</li>
+      <li>現在のバージョンはApple Developer Programの署名を行っていないため、初回起動時にmacOSの警告が表示されます。開き方は下の案内をご覧ください。</li>
+      <li>監視範囲は画面上の位置で保存されます。iPhoneの機種やミラーリング画面の大きさが変わると、範囲の再設定が必要です。</li>
+      <li>ゲームやWebサービスの中には、自動操作を禁止しているものがあります。ご利用前に各サービスの利用規約をご確認ください。ご利用による結果は、お客様の責任となります。</li>
+    </ul>
+  </section>
+
+  <section class="sec" aria-labelledby="gatekeeper">
+    <h2 id="gatekeeper">First Launch<small>初回起動時の警告</small></h2>
+    <div>
+      <p class="lead">署名を行っていないため、初回は「開発元を確認できないため開けません」などの警告が出ることがあります。アプリが壊れているわけではありません。次の順に試してください。</p>
+      <ol class="plain">
+        <li>dmgを開き、AutoClickerを「アプリケーション」フォルダへコピーする。</li>
+        <li>コピーしたAutoClickerを右クリック（またはControlキーを押しながらクリック）して「開く」を選び、表示されたダイアログでもう一度「開く」を選ぶ。</li>
+        <li>それでも開けない場合は、「システム設定 → プライバシーとセキュリティ」を開き、下部に表示される「このまま開く」を選ぶ。</li>
+      </ol>
+      <p class="note">初回起動後、「画面収録」と「アクセシビリティ」の許可を求められます。システム設定の同じ画面でAutoClickerをオンにしてください。</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="contact">
+    <h2 id="contact">Contact<small>ご相談</small></h2>
+    <ul class="links"><li><a href="mailto:info@creativesite.jp">メール</a></li></ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; CREATIVESITE</p>
+</footer>
+
+</body>
+</html>
