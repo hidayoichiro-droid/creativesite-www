@@ -156,7 +156,7 @@
         <thead><tr><th>項目</th><th>無料版</th><th>Pro版</th></tr></thead>
         <tbody>
           <tr><td>プロジェクト数</td><td>1つ</td><td>無制限</td></tr>
-          <tr><td>1プロジェクトあたりの動き数</td><td>3つまで</td><td>無制限</td></tr>
+          <tr><td>1プロジェクトあたりの動き数</td><td>5つまで</td><td>無制限</td></tr>
           <tr><td>動きのパターン</td><td>単一のみ</td><td>単一 / 複数</td></tr>
           <tr><td>実行順序</td><td>OR判定のみ</td><td>OR判定 / 上から順に</td></tr>
           <tr><td>タイマー（動きが無いときの自動動作）</td><td>なし</td><td>あり</td></tr>
@@ -171,7 +171,7 @@
   <section class="sec" aria-labelledby="req">
     <h2 id="req">Requirements<small>動作環境</small></h2>
     <ul class="plain">
-      <li>Mac：macOS 15 Sequoia以降（Apple silicon推奨）</li>
+      <li>Mac：macOS 15 Sequoia以降（Apple silicon搭載Mac、Intel非対応）</li>
       <li>iPhone（ミラーリング使用時）：iOS 18以降</li>
       <li>必要な設定：画面収録とアクセシビリティの許可</li>
       <li>ネット接続：ライセンス認証時に必要</li>
@@ -191,11 +191,12 @@
   <section class="sec" aria-labelledby="gatekeeper">
     <h2 id="gatekeeper">First Launch<small>初回起動時の警告</small></h2>
     <div>
-      <p class="lead">署名を行っていないため、初回は「開発元を確認できないため開けません」などの警告が出ることがあります。アプリが壊れているわけではありません。次の順に試してください。</p>
+      <p class="lead">署名を行っていないため、初回は「開発元を確認できないため開けません」などの警告が出ます。アプリが壊れているわけではありません。次の順に開いてください。</p>
       <ol class="plain">
         <li>dmgを開き、AutoClickerを「アプリケーション」フォルダへコピーする。</li>
-        <li>コピーしたAutoClickerを右クリック（またはControlキーを押しながらクリック）して「開く」を選び、表示されたダイアログでもう一度「開く」を選ぶ。</li>
-        <li>それでも開けない場合は、「システム設定 → プライバシーとセキュリティ」を開き、下部に表示される「このまま開く」を選ぶ。</li>
+        <li>コピーしたAutoClickerをダブルクリックする。警告が出たら、「完了」で閉じる。</li>
+        <li>「システム設定 → プライバシーとセキュリティ」を開き、下部に表示される「AutoClickerはブロックされました」の横の「このまま開く」を選ぶ。</li>
+        <li>確認の画面で、Macのパスワードまたは Touch ID を入力し、「開く」を選ぶ。次回からは、そのまま開けます。</li>
       </ol>
       <p class="note">初回起動後、「画面収録」と「アクセシビリティ」の許可を求められます。システム設定の同じ画面でAutoClickerをオンにしてください。</p>
     </div>
