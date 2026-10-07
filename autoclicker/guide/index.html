@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5VR844BE9Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5VR844BE9Q');
+</script>
+<title>使い方の例｜AutoClicker｜CREATIVESITE</title>
+<meta name="description" content="AutoClickerの上手な使い方。iPhoneミラーリングでの動作検証と、Mac上の作業での使い方を、設定のコツとあわせて紹介します。">
+<meta name="theme-color" content="#fdfdfd">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="CREATIVESITE">
+<meta property="og:title" content="使い方の例｜AutoClicker">
+<meta property="og:description" content="iPhoneミラーリングでの動作検証と、Mac上の作業での使い方。">
+<meta property="og:url" content="https://www.creativesite.jp/autoclicker/guide/">
+<link rel="canonical" href="https://www.creativesite.jp/autoclicker/guide/">
+<style>
+  :root {
+    --paper: #fdfdfd;
+    --ink: #111;
+    --sub: #555;
+    --rule: #dcdddd;
+    --floor-top: #bfc0c0;
+    --floor-bottom: #f1f1f1;
+    --link: #1c3fd0;
+    --gutter: clamp(1.25rem, 4.8vw, 6rem);
+    --horizon: 25%;
+
+    --thin: "Helvetica Neue", "Segoe UI", "Avenir Next", Helvetica, Arial, "Hiragino Sans", "Yu Gothic", sans-serif;
+    --jp: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", "Noto Sans JP", Meiryo, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--jp); line-height: 1.9; }
+  a { color: var(--link); }
+  :focus-visible { outline: 3px solid #e0a800; outline-offset: 3px; }
+
+  /* ---------- 2画面目以降: 内容 ---------- */
+  .info { width: min(980px, 100% - 2.5rem); margin: 0 auto; padding: clamp(3rem, 9vw, 6rem) 0 clamp(3rem, 8vw, 5rem); }
+  .sec { display: grid; grid-template-columns: minmax(9rem, 13rem) 1fr; column-gap: 2rem; padding: 2rem 0; border-top: 1px solid var(--rule); }
+  .sec:last-child { border-bottom: 1px solid var(--rule); }
+  .sec h2 {
+    margin: 0; font-family: var(--thin); font-weight: 300; text-transform: uppercase;
+    font-size: 1.25rem; letter-spacing: .12em; line-height: 1.6;
+  }
+  .sec h2 small { display: block; font-family: var(--jp); font-size: .72rem; letter-spacing: .08em; color: var(--sub); text-transform: none; }
+  dl { margin: 0; }
+  dl > div + div { margin-top: 1.5rem; }
+  dt { font-weight: 600; }
+  dt small { font-weight: 400; color: var(--sub); }
+  dd { margin: .15rem 0 0; max-width: 36em; color: #222; }
+  dd p { margin: 0; }
+  dd p + p { margin-top: .5rem; }
+  p, dd { line-break: strict; text-wrap: pretty; }
+
+  .links { display: flex; flex-wrap: wrap; gap: .7rem; margin: 0; padding: 0; list-style: none; }
+  .links a {
+    display: inline-block; padding: .65rem 1.4rem; min-width: 8.5rem; text-align: center;
+    color: var(--ink); text-decoration: none; border: 1px solid var(--ink);
+    font-size: .95rem; letter-spacing: .04em;
+    transition: background-color .15s, color .15s;
+  }
+  .links a:hover { background: var(--ink); color: #fff; }
+  .contact-note { margin: 0 0 1.2rem; max-width: 34em; }
+
+  footer { border-top: 1px solid var(--rule); padding: 1.3rem var(--gutter); font-family: var(--thin); font-weight: 300; font-size: .8rem; letter-spacing: .08em; color: var(--sub); }
+  footer p { margin: 0; }
+  footer p + p { margin-top: .4rem; }
+  footer a { color: var(--sub); }
+
+  @media (max-width: 720px) {
+    .sec { grid-template-columns: 1fr; row-gap: 1rem; }
+    
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .links a { transition: none; }
+  }
+
+  .top { padding: 1.2rem var(--gutter); font-family: var(--thin); font-weight: 300; letter-spacing: .12em; text-transform: uppercase; font-size: .95rem; }
+  .top a { color: var(--ink); text-decoration: none; }
+  .hero { width: min(980px, 100% - 2.5rem); margin: 0 auto; padding: clamp(2rem, 7vw, 4.5rem) 0 1.5rem; }
+  .hero h1 { margin: 0; font-family: var(--thin); font-weight: 300; font-size: clamp(2rem, 6vw, 3.6rem); letter-spacing: .06em; line-height: 1.2; }
+  .hero p { margin: 1rem 0 0; font-size: clamp(1rem, 2.2vw, 1.25rem); font-weight: 300; }
+  .lead { max-width: 40em; margin: 0 0 1.5rem; }
+  ul.plain { margin: 0; padding-left: 1.2em; max-width: 40em; }
+  ul.plain li + li { margin-top: .5rem; }
+  .tbl { overflow-x: auto; margin: 0 0 1.2rem; }
+  table { border-collapse: collapse; width: 100%; min-width: 24rem; font-size: .95rem; }
+  th, td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--rule); vertical-align: top; line-height: 1.6; }
+  th { font-weight: 600; background: #f4f4f4; }
+  .soon { display: inline-block; padding: .65rem 1.4rem; min-width: 8.5rem; text-align: center; border: 1px dashed #aaa; color: #777; font-size: .95rem; cursor: not-allowed; }
+  .soon small { display: block; font-size: .72rem; letter-spacing: .08em; }
+  .sec > * { min-width: 0; }
+  .pro { font-size: .72rem; border: 1px solid var(--sub); color: var(--sub); padding: 0 .4em; margin-left: .4em; white-space: nowrap; }
+  .note { font-size: .88rem; color: var(--sub); max-width: 40em; }
+
+</style>
+</head>
+<body>
+
+<p class="top"><a href="/autoclicker/">&larr; AutoClicker</a></p>
+
+<header class="hero">
+  <h1>Guide</h1>
+  <p>AutoClickerの上手な使い方。<span class="pro">Pro</span> は Pro版の機能です。</p>
+</header>
+
+<main class="info">
+
+  <section class="sec" aria-labelledby="basic">
+    <h2 id="basic">Basics<small>まず試す</small></h2>
+    <ol class="plain">
+      <li>無料版で、プロジェクトを1つ、動きを1つ、画像を1枚だけ作ります。</li>
+      <li>動作ログに「成功」が出るのを確認してから、動きを増やします。</li>
+      <li>監視範囲は狭く取ります。速く動き、誤反応も減ります。</li>
+      <li>登録する画像は、ボタンやアイコンなど、必要な部分だけを切り出します。背景が変わる部分は含めないほうが一致しやすくなります。</li>
+      <li>判定精度は標準の85から始めます。誤反応するなら上げ、反応しないなら下げます。</li>
+      <li>⌘R で監視の開始と停止、⌘⇧A で動きの追加ができます。</li>
+    </ol>
+  </section>
+
+  <section class="sec" aria-labelledby="iphone">
+    <h2 id="iphone">iPhone Mirroring<small>iPhoneミラーリング</small></h2>
+    <div>
+      <p class="lead">Macに映したiPhone画面を対象に、<strong>ご自身のアプリの動作確認</strong>に使えます。</p>
+      <div class="tbl"><table>
+        <tr><th>使い方</th><th>設定のコツ</th></tr>
+        <tr><td>同じ画面遷移を何十回も繰り返す不具合の再現</td><td>「複数・上から順に」で、ボタンの画像を遷移順に登録し、リピートをONにします。<span class="pro">Pro</span></td></tr>
+        <tr><td>ダイアログやポップアップの自動処理</td><td>「単一」で閉じるボタンを1枚登録し、常時監視にします。反応速度は0.5秒前後が目安です。</td></tr>
+        <tr><td>ロード待ちの吸収</td><td>画面が出たら押す仕組みなので、固定の待ち時間は不要です。「何も起きなければ先頭に戻る」タイマーを保険にします。<span class="pro">Pro</span></td></tr>
+        <tr><td>押し方の違いによる反応の確認</td><td>クリックで反応しない場合は、揺らぎ設定の「指でタップするような操作」をONにし、押している時間を調整します。<span class="pro">Pro</span></td></tr>
+      </table></div>
+      <ul class="plain">
+        <li>ミラーリングのウィンドウは、動かさない、大きさを変えない、他のウィンドウで隠さないでください。範囲は画面上の位置で保存されます。</li>
+        <li>機種やウィンドウの大きさを変えたら、範囲を取り直してください。</li>
+      </ul>
+      <p class="note">iPhoneミラーリングへの対応は、ご自身のアプリの動作検証を想定した機能です。他社のアプリやサービスへの利用は、各サービスの利用規約をご確認ください。</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="mac">
+    <h2 id="mac">On the Mac<small>Mac上の作業</small></h2>
+    <div class="tbl"><table>
+      <tr><th>使い方</th><th>設定のコツ</th></tr>
+      <tr><td>定型の確認ダイアログを自動で押す</td><td>「ウィンドウ/アプリで指定」で対象アプリだけを監視します。画面全体を見るより軽く、誤反応も減ります。</td></tr>
+      <tr><td>長い処理の見守り(ビルド・書き出し・変換)</td><td>完了時に出る画像を登録してクリックします。止まったときは、タイマーの「通知」でmacOSの通知を出せます。<span class="pro">Pro</span></td></tr>
+      <tr><td>Webアプリの繰り返し作業</td><td>「上から順に」で手順を並べ、クリック遅延の揺らぎで読み込み待ちを兼ねます。<span class="pro">Pro</span></td></tr>
+      <tr><td>デモやUIテストの再現</td><td>プロジェクトを .acproj で書き出し、別のMacで読み込みます。読み込み後に範囲だけ確認してください。<span class="pro">Pro</span></td></tr>
+      <tr><td>無操作によるタイムアウトの対策</td><td>タイマーの「指定位置をクリック」で、無反応が続いたときだけ1回押します。<span class="pro">Pro</span></td></tr>
+    </table></div>
+  </section>
+
+  <section class="sec" aria-labelledby="tips">
+    <h2 id="tips">Tips<small>止め方と安全</small></h2>
+    <ul class="plain">
+      <li>止め方を先に決めておきます。タイマーの「監視を止める」を保険にできます。<span class="pro">Pro</span></li>
+      <li>監視中でも、編集や動きの追加ができます。自動で一時停止し、保存すると再開します。</li>
+      <li>初回は「画面収録」と「アクセシビリティ」の許可が必要です。</li>
+    </ul>
+  </section>
+
+  <section class="sec" aria-labelledby="next">
+    <h2 id="next">Get Started<small>はじめる</small></h2>
+    <ul class="links"><li><a href="/autoclicker/">AutoClicker のページへ</a></li><li><a href="/autoclicker/buy/">Pro版を購入</a></li></ul>
+  </section>
+
+</main>
+
+<footer>
+  <p><a href="/autoclicker/legal/">特定商取引法に基づく表記・返金ポリシー</a></p>
+  <p>&copy; CREATIVESITE</p>
+</footer>
+</body>
+</html>
