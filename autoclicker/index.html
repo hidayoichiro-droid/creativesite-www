@@ -101,13 +101,6 @@
   .sec > * { min-width: 0; }
   .note { font-size: .88rem; color: var(--sub); max-width: 40em; }
 
-  .buy-btn { display: inline-block; padding: .65rem 1.4rem; min-width: 8.5rem; text-align: center; border: 1px solid var(--ink); background: #fff; color: var(--ink); font-size: .95rem; letter-spacing: .04em; font-family: inherit; cursor: pointer; transition: background-color .15s, color .15s; }
-  .buy-btn:hover { background: var(--ink); color: #fff; }
-  .buy-btn:disabled { opacity: .5; cursor: wait; }
-  .coupon-row { margin: .8rem 0 0; font-size: .88rem; }
-  .coupon-row input { font-family: inherit; font-size: .9rem; padding: .35rem .6rem; border: 1px solid var(--rule); width: 10rem; }
-  .buy-status { margin-top: .6rem; }
-  .buy-status.error { color: #b3261e; }
 </style>
 </head>
 <body>
@@ -125,7 +118,7 @@
     <h2 id="about">About<small>概要</small></h2>
     <div>
       <p class="lead">「この画面が出たら、このボタンを押す」。AutoClickerは、それだけを自動でやってくれるMacアプリです。座標を指定するだけのオートクリッカーと違い、画面に出た画像を見て動くので、ボタンの出るタイミングがバラバラな作業にも使えます。iPhoneアプリの動作確認（検証用途）として、iPhoneミラーリングの画面も対象にできます。</p>
-      <ul class="links"><li><span class="soon" aria-disabled="true">無料版をダウンロード<small>近日公開</small></span></li><li><button type="button" class="buy-btn" data-billing="one_time">買い切り ¥4,980 を購入</button></li></ul><p class="coupon-row"><label for="coupon-code">クーポンコード(任意)：</label> <input type="text" id="coupon-code" autocomplete="off" placeholder="お持ちの方のみ"></p><p class="note buy-status" id="buy-status" hidden></p>
+      <ul class="links"><li><span class="soon" aria-disabled="true">無料版をダウンロード<small>近日公開</small></span></li><li><a href="/autoclicker/buy/">買い切り ¥4,980（税込）を購入</a></li></ul>
     </div>
   </section>
 
@@ -173,7 +166,7 @@
           <tr><td>設定のエクスポート/インポート</td><td>なし</td><td>あり</td></tr>
         </tbody>
       </table></div>
-      <ul class="links"><li><span class="soon" aria-disabled="true">無料版をダウンロード<small>近日公開</small></span></li><li><button type="button" class="buy-btn" data-billing="one_time">買い切り ¥4,980 を購入</button></li></ul><p class="coupon-row"><label for="coupon-code-2">クーポンコード(任意)：</label> <input type="text" id="coupon-code-2" autocomplete="off" placeholder="お持ちの方のみ"></p><p class="note buy-status" id="buy-status" hidden></p>
+      <ul class="links"><li><span class="soon" aria-disabled="true">無料版をダウンロード<small>近日公開</small></span></li><li><a href="/autoclicker/buy/">買い切り ¥4,980（税込）を購入</a></li></ul>
     </div>
   </section>
 
@@ -223,84 +216,5 @@
   <p><a href="/autoclicker/legal/">特定商取引法に基づく表記・返金ポリシー</a></p>
   <p>&copy; CREATIVESITE</p>
 </footer>
-
-
-<script>
-(function () {
-  var SUPABASE_URL = "https://xlkjvekoxaodfkmbeyej.supabase.co";
-  // 公開可能キー(anon/publishable)。RLSで保護されたテーブルへは直接アクセスできず、
-  // Edge Function経由の操作のみに使う前提の、公開して問題のない値。
-  var SUPABASE_ANON_KEY = "sb_publishable_Cx5jRWN41CB_34JM9XxlqQ_NkVeRV8g";
-
-  var statusEl = document.getElementById("buy-status");
-  function showStatus(message, isError) {
-    if (!statusEl) return;
-    statusEl.textContent = message;
-    statusEl.hidden = false;
-    statusEl.classList.toggle("error", Boolean(isError));
-  }
-
-  async function startCheckout(billingType, button) {
-    var email = window.prompt("ライセンスキーをお送りするメールアドレスを入力してください");
-    if (!email) return;
-    var couponCode = "";
-    ["coupon-code", "coupon-code-2"].forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el && !couponCode) couponCode = el.value.trim();
-    });
-
-    var allButtons = document.querySelectorAll(".buy-btn");
-    allButtons.forEach(function (b) { b.disabled = true; });
-    showStatus("処理しています…", false);
-
-    try {
-      var res = await fetch(SUPABASE_URL + "/functions/v1/create-checkout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer " + SUPABASE_ANON_KEY,
-          "apikey": SUPABASE_ANON_KEY,
-        },
-        body: JSON.stringify({
-          plan_code: "pro",
-          billing_type: billingType,
-          coupon_code: couponCode || undefined,
-          customer_email: email,
-        }),
-      });
-      var data = await res.json().catch(function () { return {}; });
-
-      if (res.status === 503) {
-        showStatus("現在ご利用いただけません。しばらくしてから再度お試しください。", true);
-        return;
-      }
-      if (!data.ok) {
-        showStatus(data.error || "処理に失敗しました。", true);
-        return;
-      }
-      if (data.mode === "free_issued") {
-        showStatus("ライセンスキーをメールでお送りしました。届かない場合は迷惑メールフォルダもご確認ください。", false);
-        return;
-      }
-      if (data.url) {
-        showStatus("決済ページへ移動します…", false);
-        window.location.href = data.url;
-        return;
-      }
-      showStatus("予期しない応答でした。", true);
-    } catch (err) {
-      showStatus("通信に失敗しました。時間をおいて再度お試しください。", true);
-    } finally {
-      allButtons.forEach(function (b) { b.disabled = false; });
-    }
-  }
-
-  document.querySelectorAll(".buy-btn").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      startCheckout(btn.getAttribute("data-billing"), btn);
-    });
-  });
-})();
-</script>
 </body>
 </html>

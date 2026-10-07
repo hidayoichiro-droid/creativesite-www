@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5VR844BE9Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5VR844BE9Q');
+</script>
+<title>AutoClicker Pro版のご購入｜CREATIVESITE</title>
+<meta name="description" content="AutoClicker Pro版（買い切り・税込¥4,980）のご購入ページ。">
+<meta name="theme-color" content="#fdfdfd">
+<link rel="canonical" href="https://www.creativesite.jp/autoclicker/buy/">
+<style>
+  :root {
+    --paper: #fdfdfd;
+    --ink: #111;
+    --sub: #555;
+    --rule: #dcdddd;
+    --link: #1c3fd0;
+    --gutter: clamp(1.25rem, 4.8vw, 6rem);
+    --thin: "Helvetica Neue", "Segoe UI", "Avenir Next", Helvetica, Arial, "Hiragino Sans", "Yu Gothic", sans-serif;
+    --jp: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", "Noto Sans JP", Meiryo, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--jp); line-height: 1.9; }
+  a { color: var(--link); }
+  :focus-visible { outline: 3px solid #e0a800; outline-offset: 3px; }
+  .top { padding: 1.2rem var(--gutter); font-family: var(--thin); font-weight: 300; letter-spacing: .12em; text-transform: uppercase; font-size: .95rem; }
+  .top a { color: var(--ink); text-decoration: none; }
+  main { width: min(640px, 100% - 2.5rem); margin: 0 auto; padding: 1rem 0 5rem; }
+  h1 { font-family: var(--thin); font-weight: 300; font-size: clamp(1.6rem, 4.5vw, 2.2rem); letter-spacing: .04em; }
+  p, li, label { line-break: strict; text-wrap: pretty; }
+  p.lead { color: var(--sub); max-width: 34em; }
+  .summary { border: 1px solid var(--rule); padding: 1rem 1.2rem; margin: 1.5rem 0; }
+  .summary dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: .2rem 1.2rem; }
+  .summary dt { color: var(--sub); }
+  .summary dd { margin: 0; }
+  .summary .price { font-size: 1.3rem; font-weight: 600; }
+  form { margin-top: 1.5rem; display: grid; gap: 1.3rem; }
+  label { display: block; font-weight: 600; margin-bottom: .3rem; }
+  label small { font-weight: 400; color: var(--sub); }
+  input[type="email"], input[type="text"] { width: 100%; font-family: inherit; font-size: 1rem; padding: .6rem .8rem; border: 1px solid #aaa; background: #fff; }
+  .hint { margin: .3rem 0 0; font-size: .85rem; color: var(--sub); }
+  .agree { display: flex; gap: .6rem; align-items: flex-start; font-weight: 400; }
+  .agree input { margin-top: .5rem; }
+  button { font-family: inherit; font-size: 1rem; padding: .8rem 1.8rem; border: 1px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; letter-spacing: .04em; }
+  button:disabled { opacity: .5; cursor: wait; }
+  .status { margin: 1.2rem 0 0; padding: .9rem 1rem; border: 1px solid var(--rule); }
+  .status.error { border-color: #b3261e; color: #b3261e; }
+  .status.success { border-color: #1c7a3a; color: #1c7a3a; }
+  .status[hidden] { display: none; }
+  .note { font-size: .88rem; color: var(--sub); max-width: 36em; }
+  footer { border-top: 1px solid var(--rule); padding: 1.3rem var(--gutter); font-family: var(--thin); font-weight: 300; font-size: .8rem; letter-spacing: .08em; color: var(--sub); }
+  footer p { margin: 0; }
+  footer p + p { margin-top: .4rem; }
+  footer a { color: var(--sub); }
+</style>
+</head>
+<body>
+
+<p class="top"><a href="/autoclicker/">&larr; AutoClicker</a></p>
+
+<main>
+  <h1>Pro版のご購入</h1>
+  <p class="lead">
+    AutoClicker Pro版（買い切り）をご購入いただけます。お申し込み後、決済ページ（Square）へ移動します。
+  </p>
+
+  <div class="summary">
+    <dl>
+      <dt>商品</dt><dd>AutoClicker Pro版（買い切り）</dd>
+      <dt>価格</dt><dd class="price">¥4,980（税込）</dd>
+      <dt>内容</dt><dd>制限なし。1.x系のアップデート込み。1ライセンスにつき1台のMac。</dd>
+      <dt>動作環境</dt><dd>macOS 15 Sequoia以降、Apple silicon搭載Mac（Intel非対応）</dd>
+    </dl>
+  </div>
+
+  <form id="buy-form" novalidate>
+    <div>
+      <label for="email">メールアドレス</label>
+      <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
+      <p class="hint">ライセンスキーを、このアドレスにお送りします（決済ページにも、自動で入力されます）。</p>
+    </div>
+    <div>
+      <label for="coupon">クーポンコード <small>（お持ちの方のみ）</small></label>
+      <input type="text" id="coupon" name="coupon" autocomplete="off" autocapitalize="characters" spellcheck="false">
+    </div>
+    <label class="agree" for="agree">
+      <input type="checkbox" id="agree" required>
+      <span><a href="/autoclicker/legal/" target="_blank" rel="noopener">特定商取引法に基づく表記・返金ポリシー</a>を確認しました（ライセンスキーの発行後は、原則として返金に応じられません）。</span>
+    </label>
+    <div>
+      <button type="submit" id="submit-btn">お支払いへ進む</button>
+    </div>
+  </form>
+
+  <p class="status" id="status" hidden></p>
+  <p class="note">
+    お支払いはクレジットカード（Visa、Mastercard、American Express、銀聯）で、決済代行サービス「Square」を通じて行われます。
+    カード情報は、当サイトでは取得・保存しません。
+  </p>
+</main>
+
+<footer>
+  <p><a href="/autoclicker/legal/">特定商取引法に基づく表記・返金ポリシー</a></p>
+  <p>&copy; CREATIVESITE</p>
+</footer>
+
+<script>
+(function () {
+  var SUPABASE_URL = "https://xlkjvekoxaodfkmbeyej.supabase.co";
+  // 公開して問題のないキー(publishable)。Edge Function(create-checkout)の呼び出しにだけ使う。
+  var SUPABASE_ANON_KEY = "sb_publishable_Cx5jRWN41CB_34JM9XxlqQ_NkVeRV8g";
+
+  var form = document.getElementById("buy-form");
+  var statusEl = document.getElementById("status");
+  var submitBtn = document.getElementById("submit-btn");
+
+  function showStatus(message, kind) {
+    statusEl.textContent = message;
+    statusEl.hidden = false;
+    statusEl.classList.remove("error", "success");
+    if (kind) statusEl.classList.add(kind);
+  }
+
+  form.addEventListener("submit", async function (ev) {
+    ev.preventDefault();
+    var email = document.getElementById("email").value.trim();
+    var coupon = document.getElementById("coupon").value.trim();
+    var agreed = document.getElementById("agree").checked;
+
+    if (!email || email.indexOf("@") < 1 || email.indexOf(".") < 0) {
+      showStatus("メールアドレスを正しく入力してください。", "error");
+      document.getElementById("email").focus();
+      return;
+    }
+    if (!agreed) {
+      showStatus("特定商取引法に基づく表記・返金ポリシーをご確認のうえ、チェックを入れてください。", "error");
+      return;
+    }
+
+    submitBtn.disabled = true;
+    showStatus("処理しています…", null);
+
+    try {
+      var res = await fetch(SUPABASE_URL + "/functions/v1/create-checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + SUPABASE_ANON_KEY,
+          "apikey": SUPABASE_ANON_KEY,
+        },
+        body: JSON.stringify({
+          plan_code: "pro",
+          billing_type: "one_time",
+          coupon_code: coupon || undefined,
+          customer_email: email,
+        }),
+      });
+      var data = await res.json().catch(function () { return {}; });
+
+      if (res.status === 503) {
+        showStatus("現在ご利用いただけません。しばらくしてから、もう一度お試しください。", "error");
+        return;
+      }
+      if (!data.ok) {
+        showStatus(data.error || "処理に失敗しました。", "error");
+        return;
+      }
+      if (data.mode === "free_issued") {
+        showStatus("ライセンスキーをメールでお送りしました。届かない場合は、迷惑メールフォルダもご確認ください。", "success");
+        return;
+      }
+      if (data.url) {
+        showStatus("決済ページへ移動します…", "success");
+        window.location.href = data.url;
+        return;
+      }
+      showStatus("予期しない応答でした。お手数ですが、info@creativesite.jp までご連絡ください。", "error");
+    } catch (err) {
+      showStatus("通信に失敗しました。時間をおいて、もう一度お試しください。", "error");
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
