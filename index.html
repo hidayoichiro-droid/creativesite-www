@@ -53,6 +53,15 @@
     overflow: hidden;
     background: var(--paper);
   }
+
+  /* 背景の木と小鳥(床の上端に立つ。文字より後ろ) */
+  .tree {
+    position: absolute; bottom: var(--horizon); z-index: 0; width: auto; max-width: none;
+    pointer-events: none; user-select: none;
+    animation: appear 1.6s ease-out .2s both;
+  }
+  .tree.left  { left: 0;  height: 57.5vh; height: 57.5svh; }
+  .tree.right { right: 0; height: 48vh; height: 48svh; }
   .floor {
     position: absolute; inset: auto 0 0 0; height: var(--horizon);
     background: linear-gradient(180deg, var(--floor-top) 0%, #d8d9d9 55%, var(--floor-bottom) 100%);
@@ -131,9 +140,11 @@
     .sec { grid-template-columns: 1fr; row-gap: 1rem; }
     .thin { letter-spacing: .05em; font-size: clamp(.8rem, 3.6vw, 1rem); }
     :root { --horizon: 27%; }
+    .tree.left  { height: min(255px, 34svh); }
+    .tree.right { height: min(212px, 28svh); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .mark .refl { animation: none; }
+    .mark .refl, .tree { animation: none; }
     .links a { transition: none; }
   }
 </style>
@@ -141,6 +152,9 @@
 <body>
 
 <header class="stage">
+  <img class="tree left" src="/assets/tree-left.png" width="332" height="672" alt="" aria-hidden="true" decoding="async">
+  <img class="tree right" src="/assets/tree-right-bird.png" width="474" height="562" alt="" aria-hidden="true" decoding="async">
+
   <p class="tagline"><span>ITで、人の「困った」の</span> <span>助けになりたい</span><small>CREATIVESITE（クリエイティブサイト）</small></p>
 
   <div class="floor" aria-hidden="true"></div>
