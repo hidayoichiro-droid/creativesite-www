@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5VR844BE9Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5VR844BE9Q');
+</script>
+<title>事務作業を自動化するツール・サービス一覧｜CREATIVESITE</title>
+<meta name="description" content="在宅・副業の事務作業（経費、請求書、予定管理など）を減らすためのツールやサービスを、目的別にまとめています。">
+<!-- 案件が揃うまで検索結果には出さない。公開準備ができたらこの1行を削除する -->
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#fdfdfd">
+<link rel="canonical" href="https://www.creativesite.jp/tools/">
+<style>
+  :root {
+    --paper: #fdfdfd; --ink: #111; --sub: #555; --rule: #dcdddd; --link: #1c3fd0;
+    --thin: "Helvetica Neue", "Segoe UI", "Avenir Next", Helvetica, Arial, "Hiragino Sans", "Yu Gothic", sans-serif;
+    --jp: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", "Noto Sans JP", Meiryo, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--jp); line-height: 1.9; }
+  a { color: var(--link); }
+  :focus-visible { outline: 3px solid #e0a800; outline-offset: 3px; }
+  main { width: min(820px, 100% - 2.5rem); margin: 0 auto; padding: clamp(2rem, 7vw, 4rem) 0; }
+  p, li { line-break: strict; text-wrap: pretty; }
+
+  /* 広告表記: 常に最上部に固定表示（並べ替えの対象外） */
+  .pr { margin: 0 0 2rem; padding: .8rem 1rem; border: 1px solid var(--ink); font-size: .9rem; line-height: 1.7; }
+  .pr strong { letter-spacing: .08em; }
+
+  h1 { margin: 0 0 .5rem; font-weight: 300; font-size: clamp(1.4rem, 4vw, 2rem); letter-spacing: .06em; line-height: 1.5; }
+  .lead { margin: 0 0 2rem; color: var(--sub); }
+
+  .case { padding: 1.5rem 0; border-top: 1px solid var(--rule); }
+  .case h2 { margin: 0 0 .3rem; font-size: 1.1rem; }
+  .case .for { margin: 0 0 .6rem; color: var(--sub); font-size: .85rem; }
+  .case .btn { display: inline-block; margin-top: .6rem; padding: .6rem 1.4rem; border: 1px solid var(--ink); color: var(--ink); text-decoration: none; font-size: .95rem; }
+  .case .btn:hover { background: var(--ink); color: #fff; }
+  .case.is-first { border-top: 2px solid var(--ink); }
+  .empty { padding: 1.5rem 0; border-top: 1px solid var(--rule); color: var(--sub); }
+
+  footer { border-top: 1px solid var(--rule); padding: 1.3rem 0; font-family: var(--thin); font-weight: 300; font-size: .8rem; letter-spacing: .08em; color: var(--sub); }
+  footer .in { width: min(820px, 100% - 2.5rem); margin: 0 auto; }
+  footer p { margin: 0; }
+  footer p + p { margin-top: .4rem; }
+  footer a { color: var(--sub); }
+</style>
+</head>
+<body>
+<main>
+  <p class="pr"><strong>【PR】</strong> このページには広告（アフィリエイトリンク）が含まれています。リンク経由でお申し込みいただくと、運営者に報酬が支払われることがあります。</p>
+
+  <h1>事務作業を自動化するツール・サービス一覧</h1>
+  <p class="lead">在宅・副業の事務作業（経費、請求書、予定管理など）を減らすためのツールやサービスを、目的別にまとめています。</p>
+
+  <!--
+    案件の追加方法: 下の #cases の中に、次の形のブロックを1つずつ追加する。
+    data-key は URL の ?p=キー / #キー と対応する（例: /tools/?p=keihi, /tools/#keihi）。
+    一致した案件は先頭に移動し、そのキーのカードが強調される。PR表記は常に最上部のまま。
+
+    <section class="case" id="keihi" data-key="keihi">
+      <h2>案件名</h2>
+      <p class="for">こんな人向け: …</p>
+      <p>特徴・選んだ理由（事実のみ。報酬条件や成果は書かない）</p>
+      <a class="btn" href="ASPの発行リンク" rel="sponsored nofollow noopener" target="_blank">公式サイトを見る（広告）</a>
+    </section>
+  -->
+  <div id="cases">
+    <p class="empty" id="empty">掲載する案件を準備中です。</p>
+  </div>
+</main>
+
+<footer>
+  <div class="in">
+    <p><a href="/">© CREATIVESITE</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var box = document.getElementById('cases');
+  var cards = Array.prototype.slice.call(box.querySelectorAll('.case[data-key]'));
+  var empty = document.getElementById('empty');
+  if (cards.length && empty) empty.parentNode.removeChild(empty);
+
+  // ?p=キー を優先、なければ #キー
+  var key = '';
+  try { key = new URLSearchParams(location.search).get('p') || ''; } catch (e) {}
+  if (!key) key = decodeURIComponent((location.hash || '').replace(/^#/, ''));
+  key = key.replace(/[^\w-]/g, '');
+  if (!key) return;
+
+  var hit = null;
+  cards.forEach(function (c) { if (c.getAttribute('data-key') === key) hit = c; });
+  if (!hit) return;
+
+  box.insertBefore(hit, box.firstChild);
+  hit.classList.add('is-first');
+  if (window.gtag) gtag('event', 'hub_entry', { entry_key: key });
+})();
+</script>
+</body>
+</html>
