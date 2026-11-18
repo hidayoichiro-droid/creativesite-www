@@ -22,6 +22,7 @@
 <meta property="og:url" content="https://www.creativesite.jp/">
 <link rel="canonical" href="https://www.creativesite.jp/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fdfdfd'/%3E%3Crect y='20' width='32' height='12' fill='%23c4c5c5'/%3E%3Ctext x='16' y='19' font-family='Arial' font-size='17' font-weight='300' text-anchor='middle' fill='%23111'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/i18n.css">
 <style>
   :root {
     --paper: #fdfdfd;
@@ -136,24 +137,11 @@
   footer { border-top: 1px solid var(--rule); padding: 1.3rem var(--gutter); font-family: var(--thin); font-weight: 300; font-size: .8rem; letter-spacing: .08em; color: var(--sub); }
   footer p { margin: 0; }
 
-  /* ---------- 言語切り替え ---------- */
-  .lang {
-    position: absolute; top: clamp(.6rem, 2.4vh, 1.4rem); right: var(--gutter); z-index: 2;
-    display: flex; align-items: center; gap: .15rem;
-    font-family: var(--thin); font-weight: 300; font-size: .85rem; letter-spacing: .14em;
-    color: var(--sub);
-  }
-  .lang button {
-    font: inherit; letter-spacing: inherit; color: inherit; background: none; border: 0;
-    padding: .55rem .45rem; cursor: pointer; line-height: 1;
-  }
-  .lang button[aria-pressed="true"] { color: var(--ink); text-decoration: underline; text-underline-offset: .35em; text-decoration-thickness: 1px; cursor: default; }
-  .lang button:hover { color: var(--ink); }
-  html[lang="en"] body,
+  /* ---------- 言語切り替え(ボタンの見た目は /assets/i18n.css) ---------- */
+  .stage .lang { position: absolute; top: clamp(.6rem, 2.4vh, 1.4rem); right: var(--gutter); z-index: 2; }
   html[lang="en"] .tagline { font-family: var(--thin); }
   html[lang="en"] .tagline { letter-spacing: .03em; }
   html[lang="en"] dd { color: #333; }
-  .flapping { font-variant-numeric: tabular-nums; }
   /* 日本語のサービス一覧: 行間を少し広げ、英字は大文字にしない */
   html[lang="ja"] .mark.right { text-transform: none; letter-spacing: .06em; line-height: 1.2; }
 
@@ -176,17 +164,13 @@
   <img class="tree left" src="/assets/tree-left.png" width="332" height="672" alt="" aria-hidden="true" decoding="async">
   <img class="tree right" src="/assets/tree-right-bird.png" width="474" height="562" alt="" aria-hidden="true" decoding="async">
 
-  <div class="lang" role="group" aria-label="Language / 言語">
-    <button type="button" data-lang="ja" aria-pressed="true" lang="ja" title="日本語">JP</button>
-    <span aria-hidden="true">/</span>
-    <button type="button" data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
-  </div>
+  <div class="lang" data-lang-switch></div>
 
   <p class="tagline" data-i18n="tagline"><span>ITで、人の「困った」の</span> <span>助けになりたい</span><small>CREATIVESITE（クリエイティブサイト）</small></p>
 
   <div class="floor" aria-hidden="true"></div>
 
-  <h1 class="mark left thin" aria-label="CREATIVESITE（クリエイティブサイト）" data-i18n-aria="h1">
+  <h1 class="mark left thin" aria-label="CREATIVESITE（クリエイティブサイト）" data-i18n-attr="aria-label:h1">
     <span data-flap>CREATIVESITE</span>
     <span class="refl" aria-hidden="true" data-flap>CREATIVESITE</span>
   </h1>
@@ -297,166 +281,42 @@
 </footer>
 
 <script>
-/* ---------- JP / EN 切り替え(パタパタ表示) ---------- */
-(function () {
-  var EN = {
-    title: 'CREATIVESITE | IT Consulting, Business Automation & AI Adoption',
-    desc: 'CREATIVESITE is a solo-operated IT practice in Kobe, Japan. IT consulting, business automation with Power Automate / Power Apps, and AI adoption support for small businesses and solopreneurs.',
-    h1: 'CREATIVESITE',
-    'hero.list': '<li>IT Consulting</li><li>Automation Support</li><li>AI Video Production</li><li>Chrome Extension Development</li><li>AI Consulting</li><li>Amazon Retail &amp; Import</li>',
-    tagline: '<span>We want to help people</span> <span>out of their IT troubles.</span><small>CREATIVESITE — Kobe, Japan</small>',
-    'svc.h': 'Services<small>What we do</small>',
-    'svc.1.t': 'IT Consulting',
-    'svc.1.d': 'Tell us what is troubling you about IT. Even if you do not yet know where to start, we will work through it together and map out the next steps.',
-    'svc.2.t': 'Business Automation &amp; System Development',
-    'svc.2.d': 'Using tools such as Power Automate, Power Apps, and Chrome extensions, we automate and systematize everyday manual work and business workflows.',
-    'svc.3.t': 'AI Adoption Consulting',
-    'svc.3.d': 'We help you work out how to bring AI into your work, and how to move adoption forward in a practical way.',
-    'app.h': 'Application<small>Our app</small>',
-    'app.ac.d': 'An image-recognition auto clicker for Mac — it watches the screen and clicks when it finds what you are looking for.',
-    'app.ac.price': 'Free version available / Pro ¥4,980 (tax incl., one-time purchase)',
-    'app.ac.more': 'Learn more (Japanese) →',
-    'app.ac.buy': 'Buy a license',
-    'prd.h': 'Products<small>What we are building</small>',
-    'prd.ar.d': 'Printed photos come alive in AR. No app required — just hold up your smartphone.',
-    'prd.ar.card': 'ARise also works on the front of this business card. Scan the QR code on the front with your smartphone camera, then point the camera at the card on the page that opens.',
-    'prd.ar.link': 'Open the business card AR (for smartphones)',
-    'prd.ar.soon': 'Coming soon',
-    'prd.cr.t': 'Crealize',
-    'prd.cr.d': 'Create e-commerce sales videos from a single photo.',
-    'prd.cr.ask': 'For details, please contact us by email below.',
-    'prd.cr.apply': 'Apply here (Japanese)',
-    'abt.h': 'About<small>Who we are</small>',
-    'abt.d': 'CREATIVESITE is a sole proprietorship operated by Yoichiro Hida, a systems engineer based in Kobe, Japan, providing web production, business automation, and application development services since 2006.',
-    'cnt.h': 'Contact<small>Get in touch</small>',
-    'cnt.d': 'First, tell us about your situation — it is fine if your ideas are not yet organized.',
-    'cnt.mail': 'Email'
-  };
-
-  var root = document.documentElement;
-  var metaDesc = document.querySelector('meta[name="description"]');
-  var h1 = document.querySelector('[data-i18n-aria="h1"]');
-  var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-i18n]'));
-  var flapOnly = Array.prototype.slice.call(document.querySelectorAll('[data-flap]'));
-  var buttons = Array.prototype.slice.call(document.querySelectorAll('.lang button'));
-
-  // 日本語はページに書かれている内容をそのまま使う
-  var JA = { title: document.title, desc: metaDesc.content, h1: h1.getAttribute('aria-label') };
-  nodes.forEach(function (el) { JA[el.dataset.i18n] = el.innerHTML; });
-  var DICT = { ja: JA, en: EN };
-
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var current = 'ja';
-  var raf = 0, jobs = [];
-
-  // ---- パタパタ: 文字ごとにランダムな文字をめくり、左から順に止まる ----
-  var KANA = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン';
-  var UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  var LOWER = 'abcdefghijklmnopqrstuvwxyz';
-  function setFor(ch) {
-    if (/[぀-ヿ㐀-鿿！-～]/.test(ch)) return KANA;
-    if (/[A-Z0-9]/.test(ch)) return UPPER;
-    if (/[a-z]/.test(ch)) return LOWER;
-    return null; // 空白や記号はそのまま
-  }
-  // 同じ位置・同じ時刻なら同じ文字(床の映り込みと揃うように)
-  function pick(set, i, tick) {
-    var h = Math.imul(i + 1, 374761393) ^ Math.imul(tick + 7, 668265263);
-    h = Math.imul(h ^ (h >>> 13), 1274126177);
-    return set.charAt(((h ^ (h >>> 16)) >>> 0) % set.length);
-  }
-  function inView(el) {
-    var r = el.getBoundingClientRect();
-    return r.bottom > -50 && r.top < innerHeight + 50 && r.width > 0;
-  }
-  function addJob(el, order) {
-    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
-    var t, delay = Math.min(order * 45, 450);
-    while ((t = walker.nextNode())) {
-      if (!t.nodeValue.trim()) continue;
-      var finalText = t.nodeValue;
-      var step = Math.min(24, 650 / finalText.length);
-      jobs.push({ node: t, text: finalText, sets: Array.prototype.map.call(finalText, setFor), delay: delay, step: step });
-    }
-    el.classList.add('flapping');
-  }
-  function run() {
-    cancelAnimationFrame(raf);
-    var start = performance.now();
-    function frame(now) {
-      var t = now - start, tick = Math.floor(t / 55), busy = false;
-      jobs.forEach(function (j) {
-        var out = '', done = true;
-        for (var i = 0; i < j.text.length; i++) {
-          var settle = j.delay + 160 + i * j.step;
-          if (t >= settle || !j.sets[i]) out += j.text.charAt(i);
-          else { out += pick(j.sets[i], i, tick); done = false; }
-        }
-        if (j.node.nodeValue !== out) j.node.nodeValue = out;
-        if (!done) busy = true;
-      });
-      if (busy) raf = requestAnimationFrame(frame);
-      else finish();
-    }
-    raf = requestAnimationFrame(frame);
-  }
-  function finish() {
-    cancelAnimationFrame(raf);
-    jobs.forEach(function (j) { j.node.nodeValue = j.text; });
-    jobs = [];
-    Array.prototype.forEach.call(document.querySelectorAll('.flapping'), function (el) { el.classList.remove('flapping'); });
-  }
-
-  function apply(lang, animate) {
-    if (lang === current && animate) return;
-    finish();
-    var d = DICT[lang];
-    current = lang;
-    root.lang = lang;
-    document.title = d.title;
-    metaDesc.content = d.desc;
-    h1.setAttribute('aria-label', d.h1);
-    buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
-
-    var order = 0;
-    nodes.forEach(function (el) {
-      el.innerHTML = d[el.dataset.i18n];
-      if (animate && inView(el)) addJob(el, order++);
-    });
-    if (animate) {
-      flapOnly.forEach(function (el) { if (inView(el)) addJob(el, 0); });
-      run();
-    }
-  }
-
-  function readUrlLang() {
-    var m = /[?&]lang=(en|ja)\b/.exec(location.search);
-    return m ? m[1] : null;
-  }
-  function save(lang) {
-    try { localStorage.setItem('lang', lang); } catch (e) {}
-    try {
-      var u = new URL(location.href);
-      if (lang === 'en') u.searchParams.set('lang', 'en'); else u.searchParams.delete('lang');
-      history.replaceState(null, '', u.pathname + u.search + u.hash);
-    } catch (e) {}
-  }
-
-  buttons.forEach(function (b) {
-    b.addEventListener('click', function () {
-      var lang = b.dataset.lang;
-      if (lang === current) return;
-      apply(lang, !reduce);
-      save(lang);
-    });
-  });
-
-  // ?lang= を最優先、次に前回の選択、どちらもなければ日本語
-  var initial = readUrlLang();
-  if (!initial) { try { initial = localStorage.getItem('lang'); } catch (e) {} }
-  if (initial === 'en') apply('en', false);
-})();
+/* 英語の文章(日本語はページに書かれている内容をそのまま使う) */
+window.I18N_EN = {
+  title: 'CREATIVESITE | IT Consulting, Business Automation & AI Adoption',
+  desc: 'CREATIVESITE is a solo-operated IT practice in Kobe, Japan. IT consulting, business automation with Power Automate / Power Apps, and AI adoption support for small businesses and solopreneurs.',
+  h1: 'CREATIVESITE',
+  'hero.list': '<li>IT Consulting</li><li>Automation Support</li><li>AI Video Production</li><li>Chrome Extension Development</li><li>AI Consulting</li><li>Amazon Retail &amp; Import</li>',
+  tagline: '<span>We want to help people</span> <span>out of their IT troubles.</span><small>CREATIVESITE — Kobe, Japan</small>',
+  'svc.h': 'Services<small>What we do</small>',
+  'svc.1.t': 'IT Consulting',
+  'svc.1.d': 'Tell us what is troubling you about IT. Even if you do not yet know where to start, we will work through it together and map out the next steps.',
+  'svc.2.t': 'Business Automation &amp; System Development',
+  'svc.2.d': 'Using tools such as Power Automate, Power Apps, and Chrome extensions, we automate and systematize everyday manual work and business workflows.',
+  'svc.3.t': 'AI Adoption Consulting',
+  'svc.3.d': 'We help you work out how to bring AI into your work, and how to move adoption forward in a practical way.',
+  'app.h': 'Application<small>Our app</small>',
+  'app.ac.d': 'An image-recognition auto clicker for Mac — it watches the screen and clicks when it finds what you are looking for.',
+  'app.ac.price': 'Free version available / Pro ¥4,980 (tax incl., one-time purchase)',
+  'app.ac.more': 'Learn more →',
+  'app.ac.buy': 'Buy a license',
+  'prd.h': 'Products<small>What we are building</small>',
+  'prd.ar.d': 'Printed photos come alive in AR. No app required — just hold up your smartphone.',
+  'prd.ar.card': 'ARise also works on the front of this business card. Scan the QR code on the front with your smartphone camera, then point the camera at the card on the page that opens.',
+  'prd.ar.link': 'Open the business card AR (for smartphones)',
+  'prd.ar.soon': 'Coming soon',
+  'prd.cr.t': 'Crealize',
+  'prd.cr.d': 'Create e-commerce sales videos from a single photo.',
+  'prd.cr.ask': 'For details, please contact us by email below.',
+  'prd.cr.apply': 'Apply here (Japanese)',
+  'abt.h': 'About<small>Who we are</small>',
+  'abt.d': 'CREATIVESITE is a sole proprietorship operated by Yoichiro Hida, a systems engineer based in Kobe, Japan, providing web production, business automation, and application development services since 2006.',
+  'cnt.h': 'Contact<small>Get in touch</small>',
+  'cnt.d': 'First, tell us about your situation — it is fine if your ideas are not yet organized.',
+  'cnt.mail': 'Email'
+};
 </script>
+<script src="/assets/i18n.js"></script>
 
 </body>
 </html>

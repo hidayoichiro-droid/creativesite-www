@@ -15,6 +15,7 @@
 <meta name="description" content="AutoClicker Pro版（買い切り・税込¥4,980）のご購入ページ。">
 <meta name="theme-color" content="#fdfdfd">
 <link rel="canonical" href="https://www.creativesite.jp/autoclicker/buy/">
+<link rel="stylesheet" href="/assets/i18n.css">
 <style>
   :root {
     --paper: #fdfdfd;
@@ -63,15 +64,15 @@
 </head>
 <body>
 
-<p class="top"><a href="/autoclicker/">&larr; AutoClicker</a></p>
+<div class="top topbar"><a href="/autoclicker/">&larr; AutoClicker</a><div class="lang" data-lang-switch></div></div>
 
 <main>
-  <h1>Pro版のご購入</h1>
-  <p class="lead">
+  <h1 data-i18n="h1">Pro版のご購入</h1>
+  <p class="lead" data-i18n="lead">
     AutoClicker Pro版（買い切り）をご購入いただけます。お申し込み後、決済ページ（Square）へ移動します。
   </p>
 
-  <div class="summary">
+  <div class="summary" data-i18n="summary">
     <dl>
       <dt>商品</dt><dd>AutoClicker Pro版（買い切り）</dd>
       <dt>価格</dt><dd class="price">¥4,980（税込）</dd>
@@ -82,35 +83,78 @@
 
   <form id="buy-form" novalidate>
     <div>
-      <label for="email">メールアドレス</label>
+      <label for="email" data-i18n="f.email">メールアドレス</label>
       <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
-      <p class="hint">ライセンスキーを、このアドレスにお送りします（決済ページにも、自動で入力されます）。</p>
+      <p class="hint" data-i18n="f.email.hint">ライセンスキーを、このアドレスにお送りします（決済ページにも、自動で入力されます）。</p>
     </div>
     <div>
-      <label for="coupon">クーポンコード <small>（お持ちの方のみ）</small></label>
+      <label for="coupon" data-i18n="f.coupon">クーポンコード <small>（お持ちの方のみ）</small></label>
       <input type="text" id="coupon" name="coupon" autocomplete="off" autocapitalize="characters" spellcheck="false">
     </div>
     <label class="agree" for="agree">
       <input type="checkbox" id="agree" required>
-      <span><a href="/autoclicker/legal/" target="_blank" rel="noopener">特定商取引法に基づく表記・返金ポリシー</a>を確認しました（ライセンスキーの発行後は、原則として返金に応じられません）。</span>
+      <span data-i18n="f.agree"><a href="/autoclicker/legal/" target="_blank" rel="noopener">特定商取引法に基づく表記・返金ポリシー</a>を確認しました（ライセンスキーの発行後は、原則として返金に応じられません）。</span>
     </label>
     <div>
-      <button type="submit" id="submit-btn">お支払いへ進む</button>
+      <button type="submit" id="submit-btn" data-i18n="f.submit">お支払いへ進む</button>
     </div>
   </form>
 
   <p class="status" id="status" hidden></p>
-  <p class="note">
+  <p class="note" data-i18n="note">
     お支払いはクレジットカード（Visa、Mastercard、American Express、銀聯）で、決済代行サービス「Square」を通じて行われます。
     カード情報は、当サイトでは取得・保存しません。
   </p>
 </main>
 
 <footer>
-  <p><a href="/autoclicker/legal/">特定商取引法に基づく表記・返金ポリシー</a></p>
+  <p><a href="/autoclicker/legal/" data-i18n="foot.legal">特定商取引法に基づく表記・返金ポリシー</a></p>
   <p>&copy; CREATIVESITE</p>
 </footer>
 
+<script>
+/* 英語の文章(日本語はページに書かれている内容をそのまま使う) */
+window.I18N_EN = {
+  "title": "Buy AutoClicker Pro | CREATIVESITE",
+  "desc": "Purchase AutoClicker Pro (one-time purchase, ¥4,980 tax incl.).",
+  "h1": "Buy Pro",
+  "lead": "You can purchase AutoClicker Pro (one-time purchase). After you submit the form, you will be taken to the payment page (Square).",
+  "summary": "\n    <dl>\n      <dt>Product<\/dt><dd>AutoClicker Pro (one-time purchase)<\/dd>\n      <dt>Price<\/dt><dd class=\"price\">¥4,980 (tax incl.)<\/dd>\n      <dt>Details<\/dt><dd>No limits. Includes 1.x updates. One license per Mac.<\/dd>\n      <dt>Requirements<\/dt><dd>macOS 15 Sequoia or later, Apple silicon Mac (Intel not supported)<\/dd>\n      <dt>Language<\/dt><dd>The app’s interface is in Japanese only.<\/dd>\n    <\/dl>\n  ",
+  "f.email": "Email address",
+  "f.email.hint": "We will send your license key to this address (it will also be filled in on the payment page automatically). <strong>Please note: the license key email will be sent in Japanese.<\/strong>",
+  "f.coupon": "Coupon code <small>(if you have one)<\/small>",
+  "f.agree": "I have read the <a href=\"/autoclicker/legal/\" target=\"_blank\" rel=\"noopener\">Legal Notice &amp; Refund Policy<\/a> (in principle, no refunds are given after the license key is issued).",
+  "f.submit": "Proceed to payment",
+  "note": "Payment is by credit card (Visa, Mastercard, American Express, UnionPay) through the payment service “Square”. We do not collect or store your card information on this site.",
+  "foot.legal": "Legal Notice &amp; Refund Policy"
+};
+/* JS が出すメッセージ */
+window.I18N_MSG = {
+  "ja": {
+    "email_invalid": "メールアドレスを正しく入力してください。",
+    "agree_required": "特定商取引法に基づく表記・返金ポリシーをご確認のうえ、チェックを入れてください。",
+    "processing": "処理しています…",
+    "unavailable": "現在ご利用いただけません。しばらくしてから、もう一度お試しください。",
+    "failed": "処理に失敗しました。",
+    "free_issued": "ライセンスキーをメールでお送りしました。届かない場合は、迷惑メールフォルダもご確認ください。",
+    "redirecting": "決済ページへ移動します…",
+    "unexpected": "予期しない応答でした。お手数ですが、info@creativesite.jp までご連絡ください。",
+    "network": "通信に失敗しました。時間をおいて、もう一度お試しください。"
+  },
+  "en": {
+    "email_invalid": "Please enter a valid email address.",
+    "agree_required": "Please read the Legal Notice & Refund Policy and check the box.",
+    "processing": "Processing…",
+    "unavailable": "This is currently unavailable. Please try again later.",
+    "failed": "Something went wrong.",
+    "free_issued": "We have emailed your license key (in Japanese). If you don’t see it, please also check your spam folder.",
+    "redirecting": "Taking you to the payment page…",
+    "unexpected": "Unexpected response. Please contact info@creativesite.jp.",
+    "network": "Connection failed. Please wait a moment and try again."
+  }
+};
+</script>
+<script src="/assets/i18n.js"></script>
 <script>
 (function () {
   var SUPABASE_URL = "https://xlkjvekoxaodfkmbeyej.supabase.co";
@@ -120,6 +164,10 @@
   var form = document.getElementById("buy-form");
   var statusEl = document.getElementById("status");
   var submitBtn = document.getElementById("submit-btn");
+
+  function t(key) { return window.I18N ? I18N.t(key) : key; }
+  // 言語を切り替えたら、前の言語のメッセージは消す
+  document.addEventListener("langchange", function () { statusEl.hidden = true; });
 
   function showStatus(message, kind) {
     statusEl.textContent = message;
@@ -135,17 +183,17 @@
     var agreed = document.getElementById("agree").checked;
 
     if (!email || email.indexOf("@") < 1 || email.indexOf(".") < 0) {
-      showStatus("メールアドレスを正しく入力してください。", "error");
+      showStatus(t("email_invalid"), "error");
       document.getElementById("email").focus();
       return;
     }
     if (!agreed) {
-      showStatus("特定商取引法に基づく表記・返金ポリシーをご確認のうえ、チェックを入れてください。", "error");
+      showStatus(t("agree_required"), "error");
       return;
     }
 
     submitBtn.disabled = true;
-    showStatus("処理しています…", null);
+    showStatus(t("processing"), null);
 
     try {
       var res = await fetch(SUPABASE_URL + "/functions/v1/create-checkout", {
@@ -165,25 +213,25 @@
       var data = await res.json().catch(function () { return {}; });
 
       if (res.status === 503) {
-        showStatus("現在ご利用いただけません。しばらくしてから、もう一度お試しください。", "error");
+        showStatus(t("unavailable"), "error");
         return;
       }
       if (!data.ok) {
-        showStatus(data.error || "処理に失敗しました。", "error");
+        showStatus(data.error || t("failed"), "error");
         return;
       }
       if (data.mode === "free_issued") {
-        showStatus("ライセンスキーをメールでお送りしました。届かない場合は、迷惑メールフォルダもご確認ください。", "success");
+        showStatus(t("free_issued"), "success");
         return;
       }
       if (data.url) {
-        showStatus("決済ページへ移動します…", "success");
+        showStatus(t("redirecting"), "success");
         window.location.href = data.url;
         return;
       }
-      showStatus("予期しない応答でした。お手数ですが、info@creativesite.jp までご連絡ください。", "error");
+      showStatus(t("unexpected"), "error");
     } catch (err) {
-      showStatus("通信に失敗しました。時間をおいて、もう一度お試しください。", "error");
+      showStatus(t("network"), "error");
     } finally {
       submitBtn.disabled = false;
     }

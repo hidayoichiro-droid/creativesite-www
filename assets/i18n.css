@@ -1,0 +1,22 @@
+/* CREATIVESITE JP / EN 切り替えボタン(/assets/i18n.js と組で使う) */
+.lang {
+  display: flex; align-items: center; gap: .15rem;
+  font-family: var(--thin); font-weight: 300; font-size: .85rem; letter-spacing: .14em;
+  color: var(--sub); text-transform: none; line-height: 1;
+}
+.lang button {
+  font: inherit; letter-spacing: inherit; color: inherit; background: none; border: 0;
+  padding: .55rem .45rem; margin: 0; cursor: pointer; line-height: 1; min-width: 0;
+}
+.lang button[aria-pressed="true"] {
+  color: var(--ink); text-decoration: underline; text-underline-offset: .35em;
+  text-decoration-thickness: 1px; cursor: default;
+}
+.lang button:hover { color: var(--ink); }
+
+/* 下層ページの上部: 左に戻るリンク、右に JP / EN */
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.topbar .lang { margin-right: -.45rem; }
+
+/* 英語のときは、欧文の細い書体を本文にも使う */
+html[lang="en"] body { font-family: var(--thin); }

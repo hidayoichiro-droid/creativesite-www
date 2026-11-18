@@ -16,6 +16,7 @@
 <meta name="theme-color" content="#fdfdfd">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://www.creativesite.jp/autoclicker/thanks/">
+<link rel="stylesheet" href="/assets/i18n.css">
 <style>
   :root {
     --paper: #fdfdfd;
@@ -50,9 +51,9 @@
 </head>
 <body>
 
-<p class="top"><a href="/autoclicker/">&larr; AutoClicker</a></p>
+<div class="top topbar"><a href="/autoclicker/">&larr; AutoClicker</a><div class="lang" data-lang-switch></div></div>
 
-<main>
+<main data-i18n="main">
   <h1>ご購入ありがとうございます</h1>
   <p class="lead">
     AutoClicker Pro版のお申し込みを受け付けました。
@@ -88,9 +89,19 @@
 </main>
 
 <footer>
-  <p><a href="/autoclicker/legal/">特定商取引法に基づく表記・返金ポリシー</a></p>
+  <p><a href="/autoclicker/legal/" data-i18n="foot.legal">特定商取引法に基づく表記・返金ポリシー</a></p>
   <p>&copy; CREATIVESITE</p>
 </footer>
 
+<script>
+/* 英語の文章(日本語はページに書かれている内容をそのまま使う) */
+window.I18N_EN = {
+  "title": "Thank You for Your Purchase | AutoClicker | CREATIVESITE",
+  "desc": "What happens after purchasing AutoClicker Pro. Your license key will be sent by email.",
+  "foot.legal": "Legal Notice &amp; Refund Policy",
+  "main": "\n  <h1>Thank you for your purchase<\/h1>\n  <p class=\"lead\">\n    We have received your order for AutoClicker Pro.\n    Your license key will be <strong>sent by email<\/strong>, usually within a few minutes.\n    <strong>Please note: the license key email will be sent in Japanese.<\/strong>\n  <\/p>\n\n  <h2>If the email does not arrive<\/h2>\n  <ul>\n    <li>If it has not arrived after about 10 minutes, please check your <strong>spam folder<\/strong>.<\/li>\n    <li>It is sent from <strong>info@creativesite.jp<\/strong> with the subject “【AutoClicker】ライセンスキーのご案内” (Your AutoClicker license key).<\/li>\n    <li>Please check that the email address you entered at purchase is correct.<\/li>\n    <li>If it still does not arrive, please contact <a href=\"mailto:info@creativesite.jp\">info@creativesite.jp<\/a> (include the email address you used at purchase).<\/li>\n  <\/ul>\n\n  <h2>Using your license key<\/h2>\n  <ol>\n    <li>Open AutoClicker and go to the “License” (ライセンス) screen.<\/li>\n    <li>Paste the license key from the email as is.<\/li>\n  <\/ol>\n  <p class=\"note\">Each license can be used on one Mac.<\/p>\n\n  <h2>About the warning on first launch<\/h2>\n  <p>\n    Because the app is not signed, macOS shows a warning the first time you open it (for example, that Apple could not verify AutoClicker). The app is not damaged. Open it as follows.\n  <\/p>\n  <ol>\n    <li>Open the dmg and copy AutoClicker to the Applications folder.<\/li>\n        <li>Double-click the copied AutoClicker. When the warning appears, close it with “Done”.<\/li>\n        <li>Open System Settings → Privacy &amp; Security, scroll to the bottom, and click “Open Anyway” next to the message saying AutoClicker was blocked.<\/li>\n        <li>On the confirmation screen, enter your Mac password or use Touch ID, then choose “Open Anyway”. From then on, it opens normally.<\/li>\n  <\/ol>\n  <p class=\"note\">After the first launch, you will be asked to allow Screen Recording and Accessibility. Turn AutoClicker on in System Settings → Privacy &amp; Security.<\/p>\n"
+};
+</script>
+<script src="/assets/i18n.js"></script>
 </body>
 </html>

@@ -24,6 +24,7 @@
 <link rel="icon" type="image/png" href="/autoclicker/favicon.png">
 <link rel="apple-touch-icon" href="/autoclicker/apple-touch-icon.png">
 <meta property="og:image" content="https://www.creativesite.jp/autoclicker/icon-512.png">
+<link rel="stylesheet" href="/assets/i18n.css">
 <style>
   :root {
     --paper: #fdfdfd;
@@ -110,17 +111,17 @@
 </head>
 <body>
 
-<p class="top"><a href="/autoclicker/">&larr; AutoClicker</a></p>
+<div class="top topbar"><a href="/autoclicker/">&larr; AutoClicker</a><div class="lang" data-lang-switch></div></div>
 
 <header class="hero">
-  <img class="app-icon" src="/autoclicker/icon-512.png" width="88" height="88" alt="AutoClicker のアイコン">
+  <img class="app-icon" src="/autoclicker/icon-512.png" width="88" height="88" alt="AutoClicker のアイコン" data-i18n-attr="alt:icon.alt">
   <h1>Guide</h1>
-  <p>AutoClickerの上手な使い方。<span class="pro">Pro</span> は Pro版の機能です。</p>
+  <p data-i18n="hero">AutoClickerの上手な使い方。<span class="pro">Pro</span> は Pro版の機能です。</p>
 </header>
 
 <main class="info">
 
-  <section class="sec" aria-labelledby="basic">
+  <section class="sec" aria-labelledby="basic" data-i18n="sec.basic">
     <h2 id="basic">Basics<small>まず試す</small></h2>
     <ol class="plain">
       <li>無料版で、プロジェクトを1つ、動きを1つ、画像を1枚だけ作ります。</li>
@@ -132,7 +133,7 @@
     </ol>
   </section>
 
-  <section class="sec" aria-labelledby="iphone">
+  <section class="sec" aria-labelledby="iphone" data-i18n="sec.iphone">
     <h2 id="iphone">iPhone Mirroring<small>iPhoneミラーリング</small></h2>
     <div>
       <p class="lead">Macに映したiPhone画面を対象に、<strong>ご自身のアプリの動作確認</strong>に使えます。</p>
@@ -151,7 +152,7 @@
     </div>
   </section>
 
-  <section class="sec" aria-labelledby="mac">
+  <section class="sec" aria-labelledby="mac" data-i18n="sec.mac">
     <h2 id="mac">On the Mac<small>Mac上の作業</small></h2>
     <div class="tbl"><table>
       <tr><th>使い方</th><th>設定のコツ</th></tr>
@@ -163,7 +164,7 @@
     </table></div>
   </section>
 
-  <section class="sec" aria-labelledby="tips">
+  <section class="sec" aria-labelledby="tips" data-i18n="sec.tips">
     <h2 id="tips">Tips<small>止め方と安全</small></h2>
     <ul class="plain">
       <li>止め方を先に決めておきます。タイマーの「監視を止める」を保険にできます。<span class="pro">Pro</span></li>
@@ -172,7 +173,7 @@
     </ul>
   </section>
 
-  <section class="sec" aria-labelledby="next">
+  <section class="sec" aria-labelledby="next" data-i18n="sec.next">
     <h2 id="next">Get Started<small>はじめる</small></h2>
     <ul class="links"><li><a href="/autoclicker/">AutoClicker のページへ</a></li><li><a href="/autoclicker/buy/">Pro版を購入</a></li></ul>
   </section>
@@ -180,8 +181,24 @@
 </main>
 
 <footer>
-  <p><a href="/autoclicker/legal/">特定商取引法に基づく表記・返金ポリシー</a></p>
+  <p><a href="/autoclicker/legal/" data-i18n="foot.legal">特定商取引法に基づく表記・返金ポリシー</a></p>
   <p>&copy; CREATIVESITE</p>
 </footer>
+<script>
+/* 英語の文章(日本語はページに書かれている内容をそのまま使う) */
+window.I18N_EN = {
+  "title": "Usage Examples | AutoClicker | CREATIVESITE",
+  "desc": "How to get the most out of AutoClicker: testing apps with iPhone Mirroring and automating tasks on your Mac, with setup tips.",
+  "icon.alt": "AutoClicker icon",
+  "hero": "Tips for getting the most out of AutoClicker. <span class=\"pro\">Pro<\/span> marks Pro features. The app’s interface is in Japanese, so the Japanese labels are shown in brackets.",
+  "foot.legal": "Legal Notice &amp; Refund Policy",
+  "sec.basic": "\n    <h2 id=\"basic\">Basics<small>Start here<\/small><\/h2>\n    <ol class=\"plain\">\n      <li>With the free version, create just one project, one action, and one image.<\/li>\n      <li>Once you see “Success” (成功) in the activity log, add more actions.<\/li>\n      <li>Keep the watch area small. It runs faster and makes fewer false matches.<\/li>\n      <li>Crop only the part you need, such as a button or icon. Leaving out areas where the background changes makes matching more reliable.<\/li>\n      <li>Start with the default match accuracy of 85. Raise it if you get false matches; lower it if nothing is detected.<\/li>\n      <li>⌘R starts and stops watching, and ⌘⇧A adds an action.<\/li>\n    <\/ol>\n  ",
+  "sec.iphone": "\n    <h2 id=\"iphone\">iPhone Mirroring<small>Testing your apps<\/small><\/h2>\n    <div>\n      <p class=\"lead\">Use the iPhone screen mirrored on your Mac to <strong>test your own apps<\/strong>.<\/p>\n      <div class=\"tbl\"><table>\n        <tr><th>Use<\/th><th>Setup tips<\/th><\/tr>\n        <tr><td>Reproducing bugs that require repeating the same screen flow dozens of times<\/td><td>Choose “Multiple · Top to bottom” (複数・上から順に), register the button images in the order of the flow, and turn Repeat on. <span class=\"pro\">Pro<\/span><\/td><\/tr>\n        <tr><td>Handling dialogs and pop-ups automatically<\/td><td>Choose “Single” (単一), register one image of the close button, and keep watching. A response speed of about 0.5 seconds is a good starting point.<\/td><\/tr>\n        <tr><td>Absorbing loading waits<\/td><td>Because it clicks when the screen appears, you don’t need fixed waits. Use a timer that returns to the first step if nothing happens as a safety net. <span class=\"pro\">Pro<\/span><\/td><\/tr>\n        <tr><td>Checking how the app responds to different presses<\/td><td>If a click doesn’t register, turn on “finger-tap-like operation” (指でタップするような操作) in the variation settings, and adjust how long it is held. <span class=\"pro\">Pro<\/span><\/td><\/tr>\n      <\/table><\/div>\n      <ul class=\"plain\">\n        <li>Don’t move or resize the Mirroring window, and don’t cover it with other windows. Areas are saved as positions on the screen.<\/li>\n        <li>If you change the model or the window size, set the areas again.<\/li>\n      <\/ul>\n      <p class=\"note\">iPhone Mirroring support is intended for testing your own apps. When using it with other companies’ apps or services, please check their terms of use.<\/p>\n    <\/div>\n  ",
+  "sec.mac": "\n    <h2 id=\"mac\">On the Mac<small>Tasks on your Mac<\/small><\/h2>\n    <div class=\"tbl\"><table>\n      <tr><th>Use<\/th><th>Setup tips<\/th><\/tr>\n      <tr><td>Clicking routine confirmation dialogs automatically<\/td><td>Choose “Specify by window/app” (ウィンドウ/アプリで指定) to watch only the target app. It is lighter than watching the whole screen and makes fewer false matches.<\/td><\/tr>\n      <tr><td>Watching over long processes (builds, exports, conversions)<\/td><td>Register the image shown on completion and click it. If things stall, the timer’s “Notify” (通知) option can show a macOS notification. <span class=\"pro\">Pro<\/span><\/td><\/tr>\n      <tr><td>Repetitive tasks in web apps<\/td><td>Arrange the steps with “Top to bottom” (上から順に), and use click-delay variation to cover loading waits as well. <span class=\"pro\">Pro<\/span><\/td><\/tr>\n      <tr><td>Reproducing demos and UI tests<\/td><td>Export a project as .acproj and import it on another Mac. After importing, just check the areas. <span class=\"pro\">Pro<\/span><\/td><\/tr>\n      <tr><td>Preventing timeouts from inactivity<\/td><td>Use the timer’s “Click a set position” (指定位置をクリック) to click once, only when nothing has happened for a while. <span class=\"pro\">Pro<\/span><\/td><\/tr>\n    <\/table><\/div>\n  ",
+  "sec.tips": "\n    <h2 id=\"tips\">Tips<small>Stopping &amp; safety<\/small><\/h2>\n    <ul class=\"plain\">\n      <li>Decide how to stop before you start. The timer’s “Stop watching” (監視を止める) can serve as a safety net. <span class=\"pro\">Pro<\/span><\/li>\n      <li>You can edit and add actions while watching. Watching pauses automatically and resumes when you save.<\/li>\n      <li>The first time, you need to allow Screen Recording and Accessibility.<\/li>\n    <\/ul>\n  ",
+  "sec.next": "\n    <h2 id=\"next\">Get Started<small>Next steps<\/small><\/h2>\n    <ul class=\"links\"><li><a href=\"/autoclicker/\">Go to the AutoClicker page<\/a><\/li><li><a href=\"/autoclicker/buy/\">Buy Pro<\/a><\/li><\/ul>\n  "
+};
+</script>
+<script src="/assets/i18n.js"></script>
 </body>
 </html>
