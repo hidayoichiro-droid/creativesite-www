@@ -24,6 +24,7 @@
 <link rel="icon" type="image/png" href="/autoclicker/favicon.png">
 <link rel="apple-touch-icon" href="/autoclicker/apple-touch-icon.png">
 <meta property="og:image" content="https://www.creativesite.jp/autoclicker/icon-512.png">
+<link rel="stylesheet" href="/assets/i18n.css">
 <style>
   :root {
     --paper: #fdfdfd;
@@ -109,17 +110,17 @@
 </head>
 <body>
 
-<p class="top"><a href="/">&larr; CREATIVESITE</a></p>
+<div class="top topbar"><a href="/">&larr; CREATIVESITE</a><div class="lang" data-lang-switch></div></div>
 
 <header class="hero">
-  <img class="app-icon" src="/autoclicker/icon-512.png" width="88" height="88" alt="AutoClicker のアイコン">
+  <img class="app-icon" src="/autoclicker/icon-512.png" width="88" height="88" alt="AutoClicker のアイコン" data-i18n-attr="alt:icon.alt">
   <h1>AutoClicker</h1>
-  <p>画面を見張って、見つけたら押す。Mac用の画像認識オートクリッカー。</p>
+  <p data-i18n="hero">画面を見張って、見つけたら押す。Mac用の画像認識オートクリッカー。</p>
 </header>
 
 <main class="info">
 
-  <section class="sec" aria-labelledby="about">
+  <section class="sec" aria-labelledby="about" data-i18n="sec.about">
     <h2 id="about">About<small>概要</small></h2>
     <div>
       <p class="lead">「この画面が出たら、このボタンを押す」。AutoClickerは、それだけを自動でやってくれるMacアプリです。座標を指定するだけのオートクリッカーと違い、画面に出た画像を見て動くので、ボタンの出るタイミングがバラバラな作業にも使えます。iPhoneアプリの動作確認（検証用途）として、iPhoneミラーリングの画面も対象にできます。</p>
@@ -127,7 +128,7 @@
     </div>
   </section>
 
-  <section class="sec" aria-labelledby="uses">
+  <section class="sec" aria-labelledby="uses" data-i18n="sec.uses">
     <h2 id="uses">Use Cases<small>こんな作業に</small></h2>
     <ul class="plain">
       <li><strong>iPhoneアプリの動作確認</strong>：同じ操作を何十回も繰り返す、不具合の再現テスト</li>
@@ -137,7 +138,7 @@
     </ul>
   </section>
 
-  <section class="sec" aria-labelledby="features">
+  <section class="sec" aria-labelledby="features" data-i18n="sec.features">
     <h2 id="features">Features<small>特長</small></h2>
     <ul class="plain">
       <li><strong>画像認識で動く</strong>：押したいボタンの画像を登録すると、画面上で見つけてクリックします</li>
@@ -148,7 +149,7 @@
     </ul>
   </section>
 
-  <section class="sec" aria-labelledby="plans">
+  <section class="sec" aria-labelledby="plans" data-i18n="sec.plans">
     <h2 id="plans">Plans<small>料金プラン</small></h2>
     <div>
       <div class="tbl"><table>
@@ -175,7 +176,7 @@
     </div>
   </section>
 
-  <section class="sec" aria-labelledby="req">
+  <section class="sec" aria-labelledby="req" data-i18n="sec.req">
     <h2 id="req">Requirements<small>動作環境</small></h2>
     <ul class="plain">
       <li>Mac：macOS 15 Sequoia以降（Apple silicon搭載Mac、Intel非対応）</li>
@@ -185,7 +186,7 @@
     </ul>
   </section>
 
-  <section class="sec" aria-labelledby="notice">
+  <section class="sec" aria-labelledby="notice" data-i18n="sec.notice">
     <h2 id="notice">Notice<small>ご利用前にご確認ください</small></h2>
     <ul class="plain">
       <li>EU圏では使えません。iPhoneミラーリングがEU圏で提供されていないためです。</li>
@@ -196,7 +197,7 @@
     </ul>
   </section>
 
-  <section class="sec" aria-labelledby="gatekeeper">
+  <section class="sec" aria-labelledby="gatekeeper" data-i18n="sec.gatekeeper">
     <h2 id="gatekeeper">First Launch<small>初回起動時の警告</small></h2>
     <div>
       <p class="lead">署名を行っていないため、初回は「開発元を確認できないため開けません」などの警告が出ます。アプリが壊れているわけではありません。次の順に開いてください。</p>
@@ -210,7 +211,7 @@
     </div>
   </section>
 
-  <section class="sec" aria-labelledby="contact">
+  <section class="sec" aria-labelledby="contact" data-i18n="sec.contact">
     <h2 id="contact">Contact<small>ご相談</small></h2>
     <ul class="links"><li><a href="mailto:info@creativesite.jp">メール</a></li></ul>
   </section>
@@ -218,8 +219,27 @@
 </main>
 
 <footer>
-  <p><a href="/autoclicker/legal/">特定商取引法に基づく表記・返金ポリシー</a></p>
+  <p><a href="/autoclicker/legal/" data-i18n="foot.legal">特定商取引法に基づく表記・返金ポリシー</a></p>
   <p>&copy; CREATIVESITE</p>
 </footer>
+<script>
+/* 英語の文章(日本語はページに書かれている内容をそのまま使う) */
+window.I18N_EN = {
+  "title": "AutoClicker | Image-Recognition Auto Clicker for Mac | CREATIVESITE",
+  "desc": "AutoClicker watches your screen and clicks when it finds what you are looking for — an image-recognition auto clicker for Mac. Free version available; Pro is a one-time purchase of ¥4,980 (tax incl.).",
+  "icon.alt": "AutoClicker icon",
+  "hero": "Watches the screen and clicks when it finds what you are looking for. An image-recognition auto clicker for Mac.",
+  "foot.legal": "Legal Notice &amp; Refund Policy",
+  "sec.about": "\n    <h2 id=\"about\">About<small>Overview<\/small><\/h2>\n    <div>\n      <p class=\"lead\">“When this appears on screen, click this button.” AutoClicker is a Mac app that does exactly that, automatically. Unlike auto clickers that only click fixed coordinates, it looks at images on the screen, so it works even when buttons appear at unpredictable times. For testing iPhone apps, it can also work on the iPhone Mirroring screen.<\/p>\n      <p class=\"note\">The app’s interface is in Japanese only.<\/p>\n      <ul class=\"links\"><li><a href=\"https://github.com/hidayoichiro-droid/creativesite-www/releases/download/v1.3.1/AutoClicker-1.3.1.dmg\">Download free version (v1.3.1, Apple silicon)<\/a><\/li><li><a href=\"/autoclicker/buy/\">Buy for ¥4,980 (tax incl., one-time)<\/a><\/li><li><a href=\"/autoclicker/guide/\">Usage examples<\/a><\/li><\/ul>\n    <\/div>\n  ",
+  "sec.uses": "\n    <h2 id=\"uses\">Use Cases<small>Good for<\/small><\/h2>\n    <ul class=\"plain\">\n      <li><strong>Testing iPhone apps<\/strong>: reproducing bugs that require repeating the same steps dozens of times<\/li>\n      <li><strong>Waiting on routine tasks<\/strong>: automatically confirming the standard dialogs that appear during long processes<\/li>\n      <li><strong>Demos and screen recordings<\/strong>: replaying the same operations in the same order every time<\/li>\n      <li><strong>Repetitive taps<\/strong>: repeated actions on a fixed screen that are tedious to do by hand<\/li>\n    <\/ul>\n  ",
+  "sec.features": "\n    <h2 id=\"features\">Features<small>Highlights<\/small><\/h2>\n    <ul class=\"plain\">\n      <li><strong>Works by image recognition<\/strong>: register an image of the button you want to press, and it finds and clicks it on screen<\/li>\n      <li><strong>Chain multiple actions<\/strong>: build flows such as “click A → wait for B → click C”<\/li>\n      <li><strong>Testing with iPhone Mirroring<\/strong>: use the iPhone screen mirrored on your Mac to test app behavior (a testing feature)<\/li>\n      <li><strong>Follows windows<\/strong>: the watch area moves with the target app’s window<\/li>\n      <li><strong>Keyboard shortcuts<\/strong>: the main actions are available from the keyboard<\/li>\n    <\/ul>\n  ",
+  "sec.plans": "\n    <h2 id=\"plans\">Plans<small>Pricing<\/small><\/h2>\n    <div>\n      <div class=\"tbl\"><table>\n        <thead><tr><th>Plan<\/th><th>Price<\/th><th>Details<\/th><\/tr><\/thead>\n        <tbody>\n          <tr><td>Free<\/td><td>Free<\/td><td>Try the basic features (with the limits below)<\/td><\/tr>\n          <tr><td>Pro (one-time purchase)<\/td><td>¥4,980 (tax incl.)<\/td><td>No limits. Includes 1.x updates<\/td><\/tr>\n        <\/tbody>\n      <\/table><\/div>\n      <p class=\"note\">Please try the free version first, and buy Pro only if you need it. Each license works on one Mac.<\/p>\n      <div class=\"tbl\"><table>\n        <thead><tr><th>Feature<\/th><th>Free<\/th><th>Pro<\/th><\/tr><\/thead>\n        <tbody>\n          <tr><td>Projects<\/td><td>1<\/td><td>Unlimited<\/td><\/tr>\n          <tr><td>Actions per project<\/td><td>Up to 5<\/td><td>Unlimited<\/td><\/tr>\n          <tr><td>Action patterns<\/td><td>Single only<\/td><td>Single / Multiple<\/td><\/tr>\n          <tr><td>Execution order<\/td><td>OR match only<\/td><td>OR match / Top to bottom<\/td><\/tr>\n          <tr><td>Timer (automatic action when nothing happens)<\/td><td>No<\/td><td>Yes<\/td><\/tr>\n          <tr><td>Click variation (delay / position offset)<\/td><td>No<\/td><td>Yes<\/td><\/tr>\n          <tr><td>Export / import settings<\/td><td>No<\/td><td>Yes<\/td><\/tr>\n        <\/tbody>\n      <\/table><\/div>\n      <ul class=\"links\"><li><a href=\"https://github.com/hidayoichiro-droid/creativesite-www/releases/download/v1.3.1/AutoClicker-1.3.1.dmg\">Download free version (v1.3.1, Apple silicon)<\/a><\/li><li><a href=\"/autoclicker/buy/\">Buy for ¥4,980 (tax incl., one-time)<\/a><\/li><li><a href=\"/autoclicker/guide/\">Usage examples<\/a><\/li><\/ul>\n    <\/div>\n  ",
+  "sec.req": "\n    <h2 id=\"req\">Requirements<small>System requirements<\/small><\/h2>\n    <ul class=\"plain\">\n      <li>Mac: macOS 15 Sequoia or later (Apple silicon Macs; Intel is not supported)<\/li>\n      <li>iPhone (when using Mirroring): iOS 18 or later<\/li>\n      <li>Permissions: Screen Recording and Accessibility<\/li>\n      <li>Internet connection: required for license activation<\/li>\n      <li>Language: the app’s interface is in Japanese only<\/li>\n    <\/ul>\n  ",
+  "sec.notice": "\n    <h2 id=\"notice\">Notice<small>Please read before use<\/small><\/h2>\n    <ul class=\"plain\">\n      <li>Not available in the EU, because iPhone Mirroring is not offered there.<\/li>\n      <li>The current version is not signed through the Apple Developer Program, so macOS shows a warning the first time you open it. See the steps below.<\/li>\n      <li>Watch areas are saved as positions on the screen. If you change your iPhone model or the size of the Mirroring screen, you will need to set the areas again.<\/li>\n      <li>Some games and web services prohibit automated operation. Please check each service’s terms of use before using AutoClicker. You are responsible for the results of your use.<\/li>\n      <li>iPhone Mirroring support is intended for testing your own apps. When using it with other companies’ apps or services, please follow their terms of use.<\/li>\n    <\/ul>\n  ",
+  "sec.gatekeeper": "\n    <h2 id=\"gatekeeper\">First Launch<small>Warning on first launch<\/small><\/h2>\n    <div>\n      <p class=\"lead\">Because the app is not signed, macOS shows a warning the first time you open it (for example, that Apple could not verify AutoClicker). The app is not damaged. Open it as follows.<\/p>\n      <ol class=\"plain\">\n        <li>Open the dmg and copy AutoClicker to the Applications folder.<\/li>\n        <li>Double-click the copied AutoClicker. When the warning appears, close it with “Done”.<\/li>\n        <li>Open System Settings → Privacy &amp; Security, scroll to the bottom, and click “Open Anyway” next to the message saying AutoClicker was blocked.<\/li>\n        <li>On the confirmation screen, enter your Mac password or use Touch ID, then choose “Open Anyway”. From then on, it opens normally.<\/li>\n      <\/ol>\n      <p class=\"note\">After the first launch, you will be asked to allow Screen Recording and Accessibility. Turn AutoClicker on in System Settings → Privacy &amp; Security.<\/p>\n    <\/div>\n  ",
+  "sec.contact": "\n    <h2 id=\"contact\">Contact<small>Get in touch<\/small><\/h2>\n    <ul class=\"links\"><li><a href=\"mailto:info@creativesite.jp\">Email<\/a><\/li><\/ul>\n  "
+};
+</script>
+<script src="/assets/i18n.js"></script>
 </body>
 </html>
